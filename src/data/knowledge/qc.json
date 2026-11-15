@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0",
+  "market": "QC",
+  "sourceFile": "法国及法语区-知识数据库（六库版）.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [
+    {
+      "id": "QC-WH-001",
+      "market": "QC",
+      "kind": "culture",
+      "category": "语言主权",
+      "subcategory": "法语优先",
+      "riskLevel": "high",
+      "triggerDescription": "Publicité en anglais dominante / 英语压过法语的广告",
+      "triggers": [
+        "publicité en anglais dominante",
+        "英语压过法语的广告"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "魁北克通过《法语宪章》（Bill 96/101）保护法语，商业广告与公共标识须法语占显著主导，纯英语或英语压过法语违规。",
+      "badExample": "纯英文海报与商品页，无法语版本或法语视觉权重明显低于英语。",
+      "goodExample": "提供法语版本并使法语在视觉上显著占主导，其他语言仅作辅助。",
+      "legalBasis": "",
+      "sourceText": "魁北克《法语宪章》Charte de la langue française (Bill 96)",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "文化与宗教禁忌库"
+    },
+    {
+      "id": "QC-GZ-001",
+      "market": "QC",
+      "kind": "advertising",
+      "category": "语言合规",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "Publicité non dominée par le français / 广告未以法语为主导",
+      "triggers": [
+        "publicité non dominée par le français",
+        "广告未以法语为主导"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "Publicité non dominée par le français / 广告未以法语为主导",
+      "badExample": "户外标识与广告以英语为主体，法语字号更小、位置次要。",
+      "goodExample": "法语在文本体量、字号与视觉权重上显著占主导，其他语言仅辅助出现。",
+      "legalBasis": "魁北克《法语宪章》Charte de la langue française（Bill 96 / 101）",
+      "sourceText": "魁北克法语宪章 Bill 96；Commission de la langue française",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    }
+  ],
+  "facts": [
+    {
+      "id": "QC-SS-001",
+      "market": "QC",
+      "kind": "fact",
+      "category": "语言与基本盘",
+      "baselineClaim": "法语为官方语言；商业广告与公共标识须法语显著主导；货币加元 CAD；时区北美东部时间 EST/EDT；首府魁北克市，最大城市蒙特利尔",
+      "commonError": "误写英语为官方语言、货币欧元/法郎、时区欧洲时间",
+      "sourceText": "魁北克《法语宪章》Bill 96；加拿大官方语言专员公署",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "timeSensitive": true,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    },
+    {
+      "id": "QC-SS-002",
+      "market": "QC",
+      "kind": "fact",
+      "category": "数字表达",
+      "baselineClaim": "魁北克法语数字同法国：70 = soixante-dix，90 = quatre-vingt-dix",
+      "commonError": "套用比利时/瑞士 septante / nonante",
+      "sourceText": "魁北克法语通行用法",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    },
+    {
+      "id": "QC-SS-003",
+      "market": "QC",
+      "kind": "fact",
+      "category": "本地用词",
+      "baselineClaim": "购物 magasinage；便利店 dépanneur；汽车（口语）char",
+      "commonError": "直译法国本土用词造成理解偏差",
+      "sourceText": "魁北克法语 usage 词典",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    }
+  ]
+}

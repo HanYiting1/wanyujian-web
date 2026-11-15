@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "1.0",
+  "market": "MY",
+  "sourceFile": "区域法学知识数据库1.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [
+    {
+      "id": "MY-GZ-001",
+      "market": "MY",
+      "kind": "advertising",
+      "category": "虚假宣传",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "对商品价格、质量、标准、用途、受益、担保等作虚假或误导性陈述",
+      "triggers": [
+        "对商品价格、质量、标准、用途、受益、担保等作虚假或误导性陈述"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "对商品价格、质量、标准、用途、受益、担保等作虚假或误导性陈述",
+      "badExample": "“Diiktiraf 100% halal oleh JAKIM”（获 JAKIM 100% 清真认证，实际未申请）",
+      "goodExample": "“Bahan-bahan disahkan halal”（原料经清真确认，有证书编号可查）",
+      "legalBasis": "马来西亚 1999 年《消费者保护法》第 9 条（误导性行为）、第 10 条（虚假或误导性陈述：种类、标准、质量、等级、数量、成分、用途、受益、担保）、第 12 条（价格误导）；第 25 条（罚则：企业 25 万/50 万令吉，个人 10 万令吉或 3 年监禁）",
+      "sourceText": "马来西亚法律在线：https://www.agc.gov.my",
+      "sourceUrl": "https://www.agc.gov.my",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "MY-GZ-002",
+      "market": "MY",
+      "kind": "advertising",
+      "category": "禁广品类",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "烟草制品的广告、促销与赞助",
+      "triggers": [
+        "烟草制品的广告、促销与赞助"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "烟草制品的广告、促销与赞助",
+      "badExample": "为烟草制品生成社媒促销文案",
+      "goodExample": "改为不含推广性质的企业信息或戒烟提示",
+      "legalBasis": "马来西亚《烟草制品管制条例》2004（CTPR 2004，依 1983 年《食品法》制定）第 4—6 条、第 5A 条（2013 年修订，禁止烟草广告、促销与赞助）；2023 年《公共卫生吸烟产品管制法》（Act 852，2024-10-01 生效）",
+      "sourceText": "马来西亚法律在线：https://www.agc.gov.my",
+      "sourceUrl": "https://www.agc.gov.my",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "MY-GZ-003",
+      "market": "MY",
+      "kind": "advertising",
+      "category": "内容规范",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "传播攻击性、不雅、虚假或足以引起恐慌的内容",
+      "triggers": [
+        "传播攻击性、不雅、虚假或足以引起恐慌的内容"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "传播攻击性、不雅、虚假或足以引起恐慌的内容",
+      "badExample": "“Anda akan terkejut! Produk ini boleh membunuh”（你会震惊！这产品可能致命）",
+      "goodExample": "“Ketahui manfaat produk ini”（了解本产品的用处）",
+      "legalBasis": "马来西亚 1998 年《通信与多媒体法》第 233 条",
+      "sourceText": "马来西亚法律在线：https://www.agc.gov.my",
+      "sourceUrl": "https://www.agc.gov.my",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "MY-GZ-004",
+      "market": "MY",
+      "kind": "advertising",
+      "category": "数据合规",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "商业交易中处理个人数据未取得同意、未告知处理目的",
+      "triggers": [
+        "商业交易中处理个人数据未取得同意、未告知处理目的"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "商业交易中处理个人数据未取得同意、未告知处理目的",
+      "badExample": "表单仅收集姓名、电话，无隐私告知",
+      "goodExample": "表单上方附“Notis Perlindungan Data Peribadi”（个人数据保护告知）",
+      "legalBasis": "马来西亚 2010 年《个人数据保护法》",
+      "sourceText": "马来西亚个人数据保护局：https://www.pdp.gov.my",
+      "sourceUrl": "https://www.pdp.gov.my",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    }
+  ],
+  "facts": [
+    {
+      "id": "MY-SS-001",
+      "market": "MY",
+      "kind": "fact",
+      "category": "监管机构",
+      "baselineClaim": "马来西亚个人数据保护监管：个人数据保护专员（PDPD），隶属数字部",
+      "commonError": "AI 误写为“马来西亚通信与多媒体委员会（MCMC）主管个人数据”",
+      "sourceText": "PDPD：https://www.pdp.gov.my",
+      "sourceUrl": "https://www.pdp.gov.my",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "法律常识事实库"
+    }
+  ]
+}

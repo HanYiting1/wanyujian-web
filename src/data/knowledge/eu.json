@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "1.0",
+  "market": "EU",
+  "sourceFile": "区域法学知识数据库1.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [
+    {
+      "id": "EU-GZ-001",
+      "market": "EU",
+      "kind": "advertising",
+      "category": "数据合规",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "Transfert de données hors UE / 数据跨境传输无依据",
+      "triggers": [
+        "transfert de données hors ue",
+        "数据跨境传输无依据"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "Transfert de données hors UE / 数据跨境传输无依据",
+      "badExample": "未做传输影响评估即把欧盟客户数据上传至境外服务器。",
+      "goodExample": "明确跨境传输的合法性依据（充分性认定、标准合同条款等）并告知用户。",
+      "legalBasis": "GDPR（欧盟通用数据保护条例）",
+      "sourceText": "GDPR 第五章；欧盟数据保护委员会 edpb.europa.eu",
+      "sourceUrl": "edpb.europa.eu",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "EU-GZ-002",
+      "market": "EU",
+      "kind": "advertising",
+      "category": "虚假促销",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "虚构原价、虚构限时：宣称“原价 199 欧现价 79 欧”，但原价从未实际执行；倒计时无限刷新",
+      "triggers": [
+        "虚构原价、虚构限时：宣称“原价 199 欧现价 79 欧”，但原价从未实际执行；倒计时无限刷新"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "虚构原价、虚构限时：宣称“原价 199 欧现价 79 欧”，但原价从未实际执行；倒计时无限刷新",
+      "badExample": "“Ursprünglich 199 €, jetzt 79 €” / “原价 199 欧，现价 79 欧”（原价从未执行）",
+      "goodExample": "“Aktueller Aktionspreis: 79 €” / “当前活动价 79 欧元”（不虚构原价）",
+      "legalBasis": "指令 98/6/EC 第 6a 条（经 (EU) 2019/2161 第 2 条插入：降价公告须标示“先前价格”，即降价前不少于 30 天内的最低价）；UCPD 2005/29/EC 第 6 条第 1 款 d 项（价格误导）",
+      "sourceText": "EUR-Lex：https://eur-lex.europa.eu/eli/dir/2005/29/oj",
+      "sourceUrl": "https://eur-lex.europa.eu/eli/dir/2005/29/oj",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "EU-GZ-003",
+      "market": "EU",
+      "kind": "advertising",
+      "category": "广告标识",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "商业传播未以清晰可辨识方式标明广告性质（软文、种草帖伪装成自然内容）",
+      "triggers": [
+        "商业传播未以清晰可辨识方式标明广告性质（软文、种草帖伪装成自然内容）"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "商业传播未以清晰可辨识方式标明广告性质（软文、种草帖伪装成自然内容）",
+      "badExample": "博主发布品牌产品测评，全文无 #Werbung / #publicidad / #publicité 标识",
+      "goodExample": "帖文首行标注 #Werbung（德）/ #publicidad（西）/ #publicité（法）",
+      "legalBasis": "2005/29/EC 附件一第 11 项（付费编辑内容未标明广告即属不公平商业行为）；同指令第 7 条（付费推广未披露构成误导性遗漏）；指令 2006/114/EC 第 3 条（判定误导广告时应考察的要素）",
+      "sourceText": "EUR-Lex：https://eur-lex.europa.eu/eli/dir/2006/114/oj",
+      "sourceUrl": "https://eur-lex.europa.eu/eli/dir/2006/114/oj",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "EU-GZ-004",
+      "market": "EU",
+      "kind": "advertising",
+      "category": "环保宣传",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "无充分证据的笼统环保声明：“climate neutral / CO₂-neutral / eco-friendly / nachhaltig”，或仅靠碳抵消即宣称“气候中性”",
+      "triggers": [
+        "无充分证据的笼统环保声明：“climate neutral",
+        "CO₂-neutral"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "无充分证据的笼统环保声明：“climate neutral / CO₂-neutral / eco-friendly / nachhaltig”，或仅靠碳抵消即宣称“气候中性”",
+      "badExample": "“100 % klimaneutrales Produkt”（100% 气候中性产品，实际仅购买碳信用抵消）",
+      "goodExample": "“30 % weniger CO₂ als 2019 (Scope 1+2, TÜV-geprüft)”（较 2019 年减排 30%，经 TÜV 核证）",
+      "legalBasis": "指令 (EU) 2024/825（EmpCo）第 1 条（修订 2005/29/EC：新增附件一第 2a、4a—4c 项；修订第 6 条第 1 款并新增第 6 条第 2 款 d 项“未来环境绩效”）；德国经《UWG 第三次修正法》转化为 UWG 第 5 条第 3 款第 4 项、第 5a 条及附件，2026-09-27 起适用",
+      "sourceText": "EUR-Lex：https://eur-lex.europa.eu/eli/dir/2024/825/oj",
+      "sourceUrl": "https://eur-lex.europa.eu/eli/dir/2024/825/oj",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "EU-GZ-005",
+      "market": "EU",
+      "kind": "advertising",
+      "category": "虚假评价",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "虚构用户评价、刷单好评、付费评价未披露、伪造“真实购买”标识",
+      "triggers": [
+        "虚构用户评价、刷单好评、付费评价未披露、伪造“真实购买”标识"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "虚构用户评价、刷单好评、付费评价未披露、伪造“真实购买”标识",
+      "badExample": "自动生成 20 条五星好评并标注“Verified Purchase”（未真实交易）",
+      "goodExample": "征集真实评价，或明示“AI 生成示例，非真实用户评价”",
+      "legalBasis": "2005/29/EC 附件一第 23b、23c 项（经 (EU) 2019/2161 新增：23c未合理核实即声称评价来自真实购买者；23b提交或委托提交虚假评价、虚假呈现消费者评价与社交背书。注：23a 为票务倒卖条款，与评价无关）",
+      "sourceText": "EUR-Lex：https://eur-lex.europa.eu/eli/dir/2005/29/oj",
+      "sourceUrl": "https://eur-lex.europa.eu/eli/dir/2005/29/oj",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "EU-GZ-006",
+      "market": "EU",
+      "kind": "advertising",
+      "category": "数据合规",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "未经同意收集邮箱/手机号；未取得同意即写入 cookie 或像素追踪；默认勾选同意",
+      "triggers": [
+        "未经同意收集邮箱/手机号；未取得同意即写入 cookie 或像素追踪；默认勾选同意"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "未经同意收集邮箱/手机号；未取得同意即写入 cookie 或像素追踪；默认勾选同意",
+      "badExample": "“Geben Sie Ihre E-Mail ein und erhalten Sie 10 % Rabatt”（输入邮箱即发优惠，无勾选同意）",
+      "goodExample": "“Mit Ihrer Zustimmung senden wir Ihnen Angebote – jederzeit abbestellbar”（勾选同意后发送，可随时退订）",
+      "legalBasis": "GDPR (EU) 2016/679 第 6、7 条；ePrivacy 指令 2002/58/EC 第 5(3) 条",
+      "sourceText": "EUR-Lex：https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "sourceUrl": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "EU-GZ-007",
+      "market": "EU",
+      "kind": "advertising",
+      "category": "AI 内容标识",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "AI 生成或深度合成的图文、音视频未向受众披露其 AI 属性（深度伪造类必须披露）",
+      "triggers": [
+        "ai 生成或深度合成的图文、音视频未向受众披露其 ai 属性（深度伪造类必须披露）"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "AI 生成或深度合成的图文、音视频未向受众披露其 AI 属性（深度伪造类必须披露）",
+      "badExample": "AI 合成真人代言视频，未标注“AI 生成”",
+      "goodExample": "画面角标或说明栏注明“KI-generiert / Generado por IA / Généré par IA”",
+      "legalBasis": "《人工智能法案》(EU) 2024/1689 第 50 条（透明度义务，2026-08-02 起适用）",
+      "sourceText": "EUR-Lex：https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "sourceUrl": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "EU-GZ-008",
+      "market": "EU",
+      "kind": "advertising",
+      "category": "比较广告",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "与竞品比较时未逐项满足客观、真实、可比要件，或贬低、影射竞品",
+      "triggers": [
+        "与竞品比较时未逐项满足客观、真实、可比要件，或贬低、影射竞品"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "与竞品比较时未逐项满足客观、真实、可比要件，或贬低、影射竞品",
+      "badExample": "“Unser Akku hält 3× länger”（我方电池续航长 3 倍，无测试条件）",
+      "goodExample": "“Bis zu 12 h Laufzeit im Test nach IEC 61960”（按 IEC 61960 测试最长 12 小时）",
+      "legalBasis": "指令 2006/114/EC 第 4 条",
+      "sourceText": "EUR-Lex：https://eur-lex.europa.eu/eli/dir/2006/114/oj",
+      "sourceUrl": "https://eur-lex.europa.eu/eli/dir/2006/114/oj",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    }
+  ],
+  "facts": [
+    {
+      "id": "EU-SS-002",
+      "market": "EU",
+      "kind": "fact",
+      "category": "法规生效时点",
+      "baselineClaim": "欧盟《人工智能法案》第 50 条透明度义务自 2026-08-02 起适用",
+      "commonError": "AI 误称 AI 内容披露“2024 年已全面强制”",
+      "sourceText": "EUR-Lex：https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "sourceUrl": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "reviewStatus": "pending",
+      "timeSensitive": true,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "法律常识事实库"
+    }
+  ]
+}

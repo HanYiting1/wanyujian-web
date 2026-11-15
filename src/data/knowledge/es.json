@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "1.0",
+  "market": "ES",
+  "sourceFile": "区域法学知识数据库1.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [
+    {
+      "id": "ES-GZ-002",
+      "market": "ES",
+      "kind": "advertising",
+      "category": "价格宣传",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "虚构原价、虚构折扣幅度；“antes 199 €, ahora 79 €”但原价从未执行",
+      "triggers": [
+        "虚构原价、虚构折扣幅度；“antes 199 €",
+        "ahora 79 €”但原价从未执行"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "虚构原价、虚构折扣幅度；“antes 199 €, ahora 79 €”但原价从未执行",
+      "badExample": "“Antes 199 €, ahora 79 €”（原价 199 欧现价 79 欧，原价从未执行）",
+      "goodExample": "“Precio de lanzamiento: 79 €”（上市价 79 欧元）",
+      "legalBasis": "Ley 3/1991 第 5 条（欺骗行为）、第 7 条（欺骗性遗漏）；指令 98/6/EC 第 6a 条（经 (EU) 2019/2161 第 2 条插入，先前价格为前 30 天最低价）",
+      "sourceText": "BOE：https://www.boe.es/buscar/act.php?id=BOE-A-1991-628",
+      "sourceUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1991-628",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "ES-GZ-003",
+      "market": "ES",
+      "kind": "advertising",
+      "category": "广告标识",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "广告未标明广告属性（publicidad encubierta），或未注明广告主身份",
+      "triggers": [
+        "广告未标明广告属性（publicidad encubierta），或未注明广告主身份"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "广告未标明广告属性（publicidad encubierta），或未注明广告主身份",
+      "badExample": "博主推荐产品，全文未出现“Publicidad”或“Contenido patrocinado”",
+      "goodExample": "帖文标注“#Publicidad · Anunciante: [品牌名]”",
+      "legalBasis": "西班牙《信息社会与电子商务法》LSSI-CE（Ley 34/2002）第 20 条（商业通信须可清晰识别并标明广告主）；《广告一般法》Ley 34/1988 第 9 条；LGCA（Ley 13/2022）第 122 条第 3 款（禁止隐蔽商业通信）",
+      "sourceText": "BOE：https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758",
+      "sourceUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "ES-GZ-004",
+      "market": "ES",
+      "kind": "advertising",
+      "category": "数据合规",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "未经事先同意发送商业邮件或短信（spam）；用“默示同意”替代明示同意",
+      "triggers": [
+        "未经事先同意发送商业邮件或短信（spam）；用“默示同意”替代明示同意"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "未经事先同意发送商业邮件或短信（spam）；用“默示同意”替代明示同意",
+      "badExample": "下单页默认勾选“Acepto recibir publicidad”（默认勾选接收广告）",
+      "goodExample": "非预勾选同意 + 每封邮件附退订链接",
+      "legalBasis": "LSSI-CE（Ley 34/2002）第 21 条；GDPR 第 6、7 条",
+      "sourceText": "BOE：https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758",
+      "sourceUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "ES-GZ-005",
+      "market": "ES",
+      "kind": "advertising",
+      "category": "数据合规",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "Cookie 及类似追踪技术未取得用户同意即加载；仅有“继续浏览即同意”",
+      "triggers": [
+        "cookie 及类似追踪技术未取得用户同意即加载；仅有“继续浏览即同意”"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "Cookie 及类似追踪技术未取得用户同意即加载；仅有“继续浏览即同意”",
+      "badExample": "页面底部仅提示“Al continuar navegando aceptas las cookies”",
+      "goodExample": "分级同意弹窗：必要 cookie 默认开启，分析与营销 cookie 需主动勾选",
+      "legalBasis": "LSSI-CE（Ley 34/2002）第 22 条第 2 款（Cookie 及类似技术须经事先同意）；LOPDGDD（LO 3/2018）第 5、6 条；AEPD《Cookie 使用指南》",
+      "sourceText": "BOE：https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673",
+      "sourceUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "ES-GZ-006",
+      "market": "ES",
+      "kind": "advertising",
+      "category": "网红营销",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "“重大影响者”（usuarios especialmente relevantes）发布的商业内容未标识为广告",
+      "triggers": [
+        "“重大影响者”（usuarios especialmente relevantes）发布的商业内容未标识为广告"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "“重大影响者”（usuarios especialmente relevantes）发布的商业内容未标识为广告",
+      "badExample": "拥有 30 万粉丝的博主发布品牌合作视频，无任何广告标识",
+      "goodExample": "视频开头口播 + 文案标注“Colaboración pagada con [品牌]”",
+      "legalBasis": "LGCA（Ley 13/2022）第 94 条（“重大影响者”usuarios de especial relevancia）；皇家法令 444/2024（门槛：年收入 ≥30 万欧元、单平台 ≥100 万或跨平台 ≥200 万粉丝、年发 ≥24 条视频、定居西班牙）；AEPD 网红营销指引",
+      "sourceText": "BOE：https://www.boe.es/buscar/act.php?id=BOE-A-2022-11311",
+      "sourceUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-11311",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "ES-GZ-007",
+      "market": "ES",
+      "kind": "advertising",
+      "category": "功效宣称",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "普通食品、化妆品宣称治疗、治愈、预防疾病，或使用未经批准的疗效表述",
+      "triggers": [
+        "普通食品、化妆品宣称治疗、治愈、预防疾病，或使用未经批准的疗效表述"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "普通食品、化妆品宣称治疗、治愈、预防疾病，或使用未经批准的疗效表述",
+      "badExample": "“Cura el acné en 7 días”（7 天治愈痤疮）",
+      "goodExample": "“Ayuda a reducir la apariencia de imperfecciones”（帮助改善瑕疵外观）",
+      "legalBasis": "《广告一般法》Ley 34/1988 第 3 条 d 项（违反特定商品广告规范）、第 5 条；皇家法令 1907/1996 第 4 条（禁止宣称必然缓解或治愈、以医疗人员或患者见证诱导）",
+      "sourceText": "BOE：https://www.boe.es/buscar/doc.php?id=BOE-A-1996-18085",
+      "sourceUrl": "https://www.boe.es/buscar/doc.php?id=BOE-A-1996-18085",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "ES-GZ-008",
+      "market": "ES",
+      "kind": "advertising",
+      "category": "不正当竞争",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "贬低、影射竞品，或利用竞品声誉作不当攀附",
+      "triggers": [
+        "贬低、影射竞品，或利用竞品声誉作不当攀附"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "贬低、影射竞品，或利用竞品声誉作不当攀附",
+      "badExample": "“No como otras marcas que fallan”（不像其他会出问题的品牌）",
+      "goodExample": "“Comparado con la media del sector, +20 % de durabilidad”（较行业均值耐用性 +20%）",
+      "legalBasis": "Ley 3/1991 第 9 条（贬损行为）、第 12 条（不当利用他人声誉）",
+      "sourceText": "BOE：https://www.boe.es/buscar/act.php?id=BOE-A-1991-628",
+      "sourceUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1991-628",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "ES-GZ-009",
+      "market": "ES",
+      "kind": "advertising",
+      "category": "未成年人保护",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "广告利用未成年人轻信、或含有对未成年人身心有害的内容；诱导儿童购买",
+      "triggers": [
+        "广告利用未成年人轻信、或含有对未成年人身心有害的内容；诱导儿童购买"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "广告利用未成年人轻信、或含有对未成年人身心有害的内容；诱导儿童购买",
+      "badExample": "“¡Todos tus amigos lo tienen, no puedes ser el único!”（你朋友都有，你不能是唯一没有的）",
+      "goodExample": "“Para jugar en familia”（适合家庭一起玩）",
+      "legalBasis": "《广告一般法》Ley 34/1988 第 3 条 b 项（利用未成年人缺乏经验或轻信诱导购买，禁止无正当理由使儿童处于危险情境）",
+      "sourceText": "BOE：https://www.boe.es/buscar/act.php?id=BOE-A-1988-26156",
+      "sourceUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1988-26156",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "ES-GZ-010",
+      "market": "ES",
+      "kind": "advertising",
+      "category": "特殊品类",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "酒类广告 targeting 未成年人、鼓励过量饮用，或在禁止时段/媒体投放",
+      "triggers": [
+        "酒类广告 targeting 未成年人、鼓励过量饮用，或在禁止时段/媒体投放"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "酒类广告 targeting 未成年人、鼓励过量饮用，或在禁止时段/媒体投放",
+      "badExample": "“¡Bebe sin límites este fin de semana!”（这个周末无限畅饮）",
+      "goodExample": "“Consumo responsable · +18”（理性饮用 · 18 岁以上）",
+      "legalBasis": "LGCA（Ley 13/2022，已取代 Ley 7/2010）第 123 条第 3 款（酒类广告禁止情形：针对未成年人、关联驾驶或运动表现、暗示社交或性成功、暗示疗效等，须含适度饮酒提示）、第 4 款（>20 度仅可在 1:00—5:00 播出）、第 5 款（≤20 度仅可在 20:30—5:00 播出）；各自治区酒类销售与广告法规",
+      "sourceText": "BOE：https://www.boe.es/buscar/act.php?id=BOE-A-2022-11311",
+      "sourceUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-11311",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    }
+  ],
+  "facts": [
+    {
+      "id": "ES-SS-001",
+      "market": "ES",
+      "kind": "fact",
+      "category": "监管机构",
+      "baselineClaim": "西班牙数据保护监管机构：西班牙数据保护局（AEPD, Agencia Española de Protección de Datos）",
+      "commonError": "AI 误写为“西班牙消费者协会”或欧盟 EDPS",
+      "sourceText": "AEPD：https://www.aepd.es",
+      "sourceUrl": "https://www.aepd.es",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "法律常识事实库"
+    },
+    {
+      "id": "ES-SS-002",
+      "market": "ES",
+      "kind": "fact",
+      "category": "监管机构",
+      "baselineClaim": "西班牙消费与广告执法：消费总局（Dirección General de Consumo），隶属社会权利、消费与 2030 议程部",
+      "commonError": "AI 误写为“西班牙竞争委员会（CNMC）负责全部广告执法”",
+      "sourceText": "西班牙消费总局：https://www.dsca.gob.es",
+      "sourceUrl": "https://www.dsca.gob.es",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "法律常识事实库"
+    }
+  ]
+}

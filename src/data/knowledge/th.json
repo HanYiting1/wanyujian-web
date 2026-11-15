@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "1.0",
+  "market": "TH",
+  "sourceFile": "区域法学知识数据库1.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [
+    {
+      "id": "TH-GZ-001",
+      "market": "TH",
+      "kind": "advertising",
+      "category": "功效宣称",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "食品、保健品广告涉及功效、质量、成分宣称但未取得 FDA 广告许可（许可证号）",
+      "triggers": [
+        "食品、保健品广告涉及功效、质量、成分宣称但未取得 fda 广告许可（许可证号）"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "食品、保健品广告涉及功效、质量、成分宣称但未取得 FDA 广告许可（许可证号）",
+      "badExample": "“เผาผลาญไขมัน เห็นผลใน 7 วัน”（燃脂，7 天见效）",
+      "goodExample": "“ช่วยควบคุมน้ำหนัก เมื่อทานร่วมกับอาหารสมดุล”（配合均衡饮食帮助控制体重）",
+      "legalBasis": "泰国《食品法》B.E. 2522（1979）第 40—41 条（食品广告须经 FDA 许可）；配套卫生部/FDA 食品广告公告",
+      "sourceText": "泰国消费者保护委员会办公室：https://www.ocpb.go.th",
+      "sourceUrl": "https://www.ocpb.go.th",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "TH-GZ-002",
+      "market": "TH",
+      "kind": "advertising",
+      "category": "虚假宣传",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "虚假或夸大表述；对商品或服务的重大方面引起误解（含引用不实学术报告、统计数据）",
+      "triggers": [
+        "虚假或夸大表述；对商品或服务的重大方面引起误解（含引用不实学术报告、统计数据）"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "虚假或夸大表述；对商品或服务的重大方面引起误解（含引用不实学术报告、统计数据）",
+      "badExample": "“งานวิจัยมหาวิทยาลัย confirms 99% efficacy”（某大学研究证实 99% 有效，研究不存在）",
+      "goodExample": "“ผลทดสอบจากห้องปฏิบัติการอิสระ”（独立实验室检测结果）",
+      "legalBasis": "泰国《消费者保护法》B.E. 2522 第 22 条（虚假、夸大，或对商品服务重大方面引起误解，含引用不实学术报告、统计数据）；第 47 条（初犯：6 个月以下拘禁或 5 万泰铢以下罚金；累犯：1 年以下或 10 万泰铢以下）",
+      "sourceText": "泰国消费者保护委员会办公室：https://www.ocpb.go.th",
+      "sourceUrl": "https://www.ocpb.go.th",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "TH-GZ-003",
+      "market": "TH",
+      "kind": "advertising",
+      "category": "豁免情形",
+      "subcategory": "",
+      "riskLevel": "low",
+      "triggerDescription": "常人显然可知为夸张修辞的“吹嘘”（puffery），法律明确不视为虚假表述——不宜误判为高危",
+      "triggers": [
+        "常人显然可知为夸张修辞的“吹嘘”（puffery），法律明确不视为虚假表述——不宜误判为高危"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "常人显然可知为夸张修辞的“吹嘘”（puffery），法律明确不视为虚假表述——不宜误判为高危",
+      "badExample": "“อร่อยจนลอยได้”（好吃到飘起来）",
+      "goodExample": "保留原文，仅提示“属夸张修辞，通常不构成违法”",
+      "legalBasis": "《消费者保护法》B.E. 2522 第 22 条末款（普通人显然可知不可能为真的夸张修辞，不落入第 1 项“虚假或夸大”）",
+      "sourceText": "泰国消费者保护委员会办公室：https://www.ocpb.go.th",
+      "sourceUrl": "https://www.ocpb.go.th",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "TH-GZ-004",
+      "market": "TH",
+      "kind": "advertising",
+      "category": "广告方式",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "广告使用可能危害健康、身体或精神的方法，或对消费者造成骚扰（如高频弹窗、恐吓式话术）",
+      "triggers": [
+        "广告使用可能危害健康、身体或精神的方法，或对消费者造成骚扰（如高频弹窗、恐吓式话术）"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "广告使用可能危害健康、身体或精神的方法，或对消费者造成骚扰（如高频弹窗、恐吓式话术）",
+      "badExample": "“ถ้าไม่ซื้อวันนี้ คุณจะเสียใจตลอดไป”（今天不买你会后悔一辈子）",
+      "goodExample": "“โปรโมชันสิ้นสุดวันที่ 30 พ.ย.”（活动 11 月 30 日截止，客观陈述）",
+      "legalBasis": "《消费者保护法》B.E. 2522 第 23 条",
+      "sourceText": "泰国消费者保护委员会办公室：https://www.ocpb.go.th",
+      "sourceUrl": "https://www.ocpb.go.th",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "TH-GZ-005",
+      "market": "TH",
+      "kind": "advertising",
+      "category": "数据合规",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "收集、使用个人数据（含行为广告画像）未取得明确同意，或未提供撤回同意途径",
+      "triggers": [
+        "收集、使用个人数据（含行为广告画像）未取得明确同意，或未提供撤回同意途径"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "收集、使用个人数据（含行为广告画像）未取得明确同意，或未提供撤回同意途径",
+      "badExample": "未经同意向历史订单手机号推送 SMS 广告",
+      "goodExample": "仅向勾选同意营销的号码推送，并附退订方式",
+      "legalBasis": "泰国《个人数据保护法》PDPA B.E. 2562 (2019)",
+      "sourceText": "泰国个人数据保护委员会：https://www.pdpc.or.th",
+      "sourceUrl": "https://www.pdpc.or.th",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    }
+  ],
+  "facts": [
+    {
+      "id": "TH-SS-001",
+      "market": "TH",
+      "kind": "fact",
+      "category": "监管机构",
+      "baselineClaim": "泰国广告监管与消费者投诉受理：消费者保护委员会办公室（OCPB）",
+      "commonError": "AI 误写为“泰国 FDA 负责全部广告审查”（FDA 仅管食品、药品、化妆品等品类）",
+      "sourceText": "OCPB：https://www.ocpb.go.th",
+      "sourceUrl": "https://www.ocpb.go.th",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "法律常识事实库"
+    },
+    {
+      "id": "TH-SS-002",
+      "market": "TH",
+      "kind": "fact",
+      "category": "法律责任",
+      "baselineClaim": "泰国虚假广告（CPA 第 47 条）：初犯可处 6 个月以下拘禁或 5 万泰铢以下罚金；累犯 1 年以下或 10 万泰铢以下",
+      "commonError": "AI 认为泰国仅行政处罚，无刑事责任",
+      "sourceText": "OCPB：https://www.ocpb.go.th",
+      "sourceUrl": "https://www.ocpb.go.th",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "法律常识事实库"
+    }
+  ]
+}

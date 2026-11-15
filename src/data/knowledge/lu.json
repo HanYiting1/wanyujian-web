@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "market": "LU",
+  "sourceFile": "法国及法语区-知识数据库（六库版）.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [],
+  "facts": [
+    {
+      "id": "LU-SS-001",
+      "market": "LU",
+      "kind": "fact",
+      "category": "基本盘",
+      "baselineClaim": "首都卢森堡市；货币欧元；官方语言卢森堡语、法语、德语；时区 CET",
+      "commonError": "误写仅德语官方、货币法郎",
+      "sourceText": "卢森堡政府 gouvernement.lu",
+      "sourceUrl": "gouvernement.lu",
+      "reviewStatus": "pending",
+      "timeSensitive": true,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    }
+  ]
+}

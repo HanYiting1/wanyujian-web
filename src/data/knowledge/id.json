@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.0",
+  "market": "ID",
+  "sourceFile": "区域法学知识数据库1.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [
+    {
+      "id": "ID-GZ-001",
+      "market": "ID",
+      "kind": "advertising",
+      "category": "虚假宣传",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "虚假或误导性广告：措辞、画面、展示、标记与称谓错误或足以误导消费者",
+      "triggers": [
+        "虚假或误导性广告：措辞、画面、展示、标记与称谓错误或足以误导消费者"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "虚假或误导性广告：措辞、画面、展示、标记与称谓错误或足以误导消费者",
+      "badExample": "“Dijamin sembuh dalam 3 hari”（保证 3 天痊愈）",
+      "goodExample": "“Membantu meredakan gejala ringan”（帮助缓解轻微症状）",
+      "legalBasis": "印度尼西亚 1999 年第 8 号《消费者保护法》第 9 条（不得虚假提供、宣传）、第 10 条（价格、功效、担保、折扣、危险不得虚假或误导）；第 62 条（刑事：5 年以下监禁或 20 亿印尼盾以下罚金）、第 60 条（行政罚）",
+      "sourceText": "印尼法规数据库：https://peraturan.bpk.go.id",
+      "sourceUrl": "https://peraturan.bpk.go.id",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "ID-GZ-002",
+      "market": "ID",
+      "kind": "advertising",
+      "category": "不正当竞争",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "贬低其他经营者商品/服务，或暗示同类产品均有害",
+      "triggers": [
+        "贬低其他经营者商品/服务，或暗示同类产品均有害"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "贬低其他经营者商品/服务，或暗示同类产品均有害",
+      "badExample": "“Jangan pakai produk lain, berbahaya!”（别用其他产品，很危险！）",
+      "goodExample": "“Berdasarkan uji laboratorium internal, formula kami lebih lembut”（基于内部实验室测试，配方更温和）",
+      "legalBasis": "1999 年第 8 号《消费者保护法》第 9 条第 1 款 i 项（直接或间接贬低他人商品/服务）",
+      "sourceText": "印尼法规数据库：https://peraturan.bpk.go.id",
+      "sourceUrl": "https://peraturan.bpk.go.id",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "ID-GZ-003",
+      "market": "ID",
+      "kind": "advertising",
+      "category": "数据合规",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "电子系统中个人数据处理未取得同意、未履行告知义务；未设数据保护官（DPO）等组织义务",
+      "triggers": [
+        "电子系统中个人数据处理未取得同意、未履行告知义务；未设数据保护官（dpo）等组织义务"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "电子系统中个人数据处理未取得同意、未履行告知义务；未设数据保护官（DPO）等组织义务",
+      "badExample": "注册页预勾选“Saya setuju data digunakan untuk promosi”",
+      "goodExample": "非预勾选同意，并区分“必要处理”与“营销用途”",
+      "legalBasis": "印度尼西亚 2022 年第 27 号《个人数据保护法》",
+      "sourceText": "印尼法规数据库：https://peraturan.bpk.go.id",
+      "sourceUrl": "https://peraturan.bpk.go.id",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    }
+  ],
+  "facts": [
+    {
+      "id": "ID-SS-001",
+      "market": "ID",
+      "kind": "fact",
+      "category": "监管机构",
+      "baselineClaim": "印度尼西亚消费者保护主管：贸易部（Kemendag）与全国消费者保护局（BPKN）",
+      "commonError": "AI 误写为“印尼广告由通信与信息部统一审查”",
+      "sourceText": "印尼贸易部：https://www.kemendag.go.id",
+      "sourceUrl": "https://www.kemendag.go.id",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "法律常识事实库"
+    }
+  ]
+}

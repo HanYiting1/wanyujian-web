@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0",
+  "market": "SG",
+  "sourceFile": "区域法学知识数据库1.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [
+    {
+      "id": "SG-GZ-001",
+      "market": "SG",
+      "kind": "advertising",
+      "category": "不公平行为",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "虚假或误导性陈述、施加不当压力、利用消费者弱势等不公平交易行为",
+      "triggers": [
+        "虚假或误导性陈述、施加不当压力、利用消费者弱势等不公平交易行为"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "虚假或误导性陈述、施加不当压力、利用消费者弱势等不公平交易行为",
+      "badExample": "“Only 2 left! Buy now or lose it forever”（仅剩 2 件，错过永失）",
+      "goodExample": "“Sale ends 30 Nov”（促销 11 月 30 日结束，真实截止日）",
+      "legalBasis": "新加坡 2004 年《消费者保护（公平交易）法》及第二附表",
+      "sourceText": "新加坡法规在线：https://sso.agc.gov.sg",
+      "sourceUrl": "https://sso.agc.gov.sg",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "SG-GZ-002",
+      "market": "SG",
+      "kind": "advertising",
+      "category": "广告自律",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "广告内容违反“合法、正当、诚实、真实”（legal, decent, honest, truthful）总则",
+      "triggers": [
+        "广告内容违反“合法、正当、诚实、真实”（legal",
+        "decent",
+        "honest",
+        "truthful）总则"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "广告内容违反“合法、正当、诚实、真实”（legal, decent, honest, truthful）总则",
+      "badExample": "使用白大褂模特暗示“医生推荐”，无真实背书",
+      "goodExample": "删除医疗人员形象，改为成分与检测说明",
+      "legalBasis": "新加坡广告标准局（ASAS）《新加坡广告实践守则》SCAP",
+      "sourceText": "ASAS：https://www.asas.org.sg",
+      "sourceUrl": "https://www.asas.org.sg",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "SG-GZ-003",
+      "market": "SG",
+      "kind": "advertising",
+      "category": "数据合规",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "收集、使用、披露个人数据未取得合理同意，或未提供查阅与更正途径",
+      "triggers": [
+        "收集、使用、披露个人数据未取得合理同意，或未提供查阅与更正途径"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "收集、使用、披露个人数据未取得合理同意，或未提供查阅与更正途径",
+      "badExample": "注册页小字“we may share your data with partners”（默认共享给合作方）",
+      "goodExample": "单独取得营销与第三方共享的同意，并提供退订",
+      "legalBasis": "新加坡 2012 年《个人数据保护法》（PDPA）",
+      "sourceText": "新加坡个人数据保护委员会：https://www.pdpc.gov.sg",
+      "sourceUrl": "https://www.pdpc.gov.sg",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    }
+  ],
+  "facts": [
+    {
+      "id": "SG-SS-001",
+      "market": "SG",
+      "kind": "fact",
+      "category": "监管机构",
+      "baselineClaim": "新加坡广告自律机构：广告标准局（ASAS），《新加坡广告实践守则》（SCAP）由其维护",
+      "commonError": "AI 误写为“新加坡政府设广告管理局统一发牌”",
+      "sourceText": "ASAS：https://www.asas.org.sg",
+      "sourceUrl": "https://www.asas.org.sg",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "法律常识事实库"
+    }
+  ]
+}

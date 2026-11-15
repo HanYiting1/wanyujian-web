@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "market": "MC",
+  "sourceFile": "法国及法语区-知识数据库（六库版）.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [],
+  "facts": [
+    {
+      "id": "MC-SS-001",
+      "market": "MC",
+      "kind": "fact",
+      "category": "基本盘",
+      "baselineClaim": "官方语言法语；货币欧元；时区 CET；城邦国家",
+      "commonError": "误写意大利语为官方语言",
+      "sourceText": "摩纳哥公国官方资料",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "timeSensitive": true,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    }
+  ]
+}

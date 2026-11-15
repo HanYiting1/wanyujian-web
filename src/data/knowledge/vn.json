@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "1.0",
+  "market": "VN",
+  "sourceFile": "区域法学知识数据库1.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [
+    {
+      "id": "VN-GZ-002",
+      "market": "VN",
+      "kind": "advertising",
+      "category": "语言规范",
+      "subcategory": "",
+      "riskLevel": "medium",
+      "triggerDescription": "外语字号超过越南语字号的 3/4，或外语内容未置于越南语下方",
+      "triggers": [
+        "外语字号超过越南语字号的 3/4，或外语内容未置于越南语下方"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "外语字号超过越南语字号的 3/4，或外语内容未置于越南语下方",
+      "badExample": "英文 Slogan 字号为越南语的 2 倍且置于上方",
+      "goodExample": "越南语为主、外语字号不超过越南语 3/4 并置于其下方",
+      "legalBasis": "《广告法》第 18 条第 2 款（同时使用越南语与外语时，外语字号不得超过越南语字号的 3/4，且须置于越南语下方）；Decree 38/2021/NĐ-CP 第 35 条（罚款 500 万—1000 万越南盾）",
+      "sourceText": "越南政府法规库：https://vanban.chinhphu.vn",
+      "sourceUrl": "https://vanban.chinhphu.vn",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "VN-GZ-003",
+      "market": "VN",
+      "kind": "advertising",
+      "category": "禁广品类",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "广告烟草、酒精度 15 度以上酒类、24 个月以下婴儿母乳代用品、处方药等禁止广告的商品服务",
+      "triggers": [
+        "广告烟草、酒精度 15 度以上酒类、24 个月以下婴儿母乳代用品、处方药等禁止广告的商品服务"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "广告烟草、酒精度 15 度以上酒类、24 个月以下婴儿母乳代用品、处方药等禁止广告的商品服务",
+      "badExample": "为 52 度白酒生成社媒广告文案",
+      "goodExample": "改为不含广告性质的品牌企业介绍，或调整品类与度数",
+      "legalBasis": "《广告法》第 7 条（禁止广告的商品、服务清单）",
+      "sourceText": "越南政府法规库：https://vanban.chinhphu.vn",
+      "sourceUrl": "https://vanban.chinhphu.vn",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "VN-GZ-004",
+      "market": "VN",
+      "kind": "advertising",
+      "category": "虚假宣传",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "虚假或引起混淆的广告：对经营能力、数量、质量、价格、功能、设计、产地、类型、服务方式、保修期作不实表述",
+      "triggers": [
+        "虚假或引起混淆的广告：对经营能力、数量、质量、价格、功能、设计、产地、类型、服务方式、保修期作不实表述"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "虚假或引起混淆的广告：对经营能力、数量、质量、价格、功能、设计、产地、类型、服务方式、保修期作不实表述",
+      "badExample": "“Nhập khẩu chính hãng 100% từ Đức”（100% 德国原装进口，实际为国内分装）",
+      "goodExample": "“Sản xuất theo tiêu chuẩn Đức”（按德国标准生产）",
+      "legalBasis": "《广告法》第 8 条第 9 款（对经营能力、数量、质量、价格、功效、设计、包装、商标、产地、类别、服务方式、保修期作不实或混淆表述）；Decree 38/2021/NĐ-CP 第 34 条第 5 款（罚款 6000 万—8000 万越南盾，组织加倍至 1.2 亿—1.6 亿）",
+      "sourceText": "越南政府法规库：https://vanban.chinhphu.vn",
+      "sourceUrl": "https://vanban.chinhphu.vn",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "VN-GZ-005",
+      "market": "VN",
+      "kind": "advertising",
+      "category": "文化敏感",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "侵犯宗教信仰自由、性别或残障歧视、损害越南历史文化与优良风俗的表述",
+      "triggers": [
+        "侵犯宗教信仰自由、性别或残障歧视、损害越南历史文化与优良风俗的表述"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "侵犯宗教信仰自由、性别或残障歧视、损害越南历史文化与优良风俗的表述",
+      "badExample": "以寺庙、僧侣形象作娱乐化促销素材",
+      "goodExample": "改用与宗教无关的通用节庆元素",
+      "legalBasis": "《广告法》第 8 条、第 9 条（不得损害历史文化与优良风俗、不得性别或残障歧视、不得侵犯信仰自由）；Decree 38/2021/NĐ-CP 第 34 条第 3 款（歧视类，1000 万—2000 万越南盾）、第 4 款（历史文化类，4000 万—6000 万越南盾）",
+      "sourceText": "越南政府法规库：https://vanban.chinhphu.vn",
+      "sourceUrl": "https://vanban.chinhphu.vn",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    },
+    {
+      "id": "VN-GZ-006",
+      "market": "VN",
+      "kind": "advertising",
+      "category": "数据合规",
+      "subcategory": "",
+      "riskLevel": "high",
+      "triggerDescription": "收集、处理个人信息未取得同意，或未履行告知义务；跨境传输未做影响评估",
+      "triggers": [
+        "收集、处理个人信息未取得同意，或未履行告知义务；跨境传输未做影响评估"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "收集、处理个人信息未取得同意，或未履行告知义务；跨境传输未做影响评估",
+      "badExample": "表单底部仅写“Gửi”（提交），无同意条款",
+      "goodExample": "提交前勾选“Tôi đồng ý với chính sách dữ liệu”（我同意数据政策）",
+      "legalBasis": "Decree 13/2023/NĐ-CP（个人数据保护法令）",
+      "sourceText": "越南政府法规库：https://vanban.chinhphu.vn",
+      "sourceUrl": "https://vanban.chinhphu.vn",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "广告合规规则库"
+    }
+  ],
+  "facts": [
+    {
+      "id": "VN-SS-001",
+      "market": "VN",
+      "kind": "fact",
+      "category": "监管机构",
+      "baselineClaim": "越南广告管理主管机关：文化体育旅游部（Bộ Văn hóa, Thể thao và Du lịch）广告局",
+      "commonError": "AI 误写为“越南工商部负责广告内容审查”",
+      "sourceText": "越南政府门户：https://vanban.chinhphu.vn",
+      "sourceUrl": "https://vanban.chinhphu.vn",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "法律常识事实库"
+    },
+    {
+      "id": "VN-SS-002",
+      "market": "VN",
+      "kind": "fact",
+      "category": "量化规则",
+      "baselineClaim": "越南广告中外语字号不得超过越南语字号的 3/4，且须置于越南语下方",
+      "commonError": "AI 生成双语物料时默认外语可作主视觉",
+      "sourceText": "《广告法》第 18 条第 2 款；Decree 38/2021/NĐ-CP 第 35 条：https://vanban.chinhphu.vn",
+      "sourceUrl": "https://vanban.chinhphu.vn",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "法律常识事实库"
+    }
+  ]
+}

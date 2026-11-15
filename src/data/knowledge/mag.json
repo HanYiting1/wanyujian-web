@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0",
+  "market": "MAG",
+  "sourceFile": "法国及法语区-知识数据库（六库版）.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [
+    {
+      "id": "MAG-WH-001",
+      "market": "MAG",
+      "kind": "culture",
+      "category": "宗教禁忌",
+      "subcategory": "饮食与宗教",
+      "riskLevel": "high",
+      "triggerDescription": "Porc, alcool, Ramadan / 猪肉、酒精、斋月场景",
+      "triggers": [
+        "porc",
+        "alcool",
+        "ramadan",
+        "猪肉",
+        "酒精",
+        "斋月场景"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "阿尔及利亚、摩洛哥、突尼斯等以穆斯林为主，宣传含猪肉、酒精、戏谑斋月或不当宗教内容易造成严重冒犯。",
+      "badExample": "斋月期间推送酒精、猪肉产品促销，或戏谑封斋习俗。",
+      "goodExample": "尊重当地宗教与饮食规范，规避猪肉、酒精及宗教戏谑内容，斋月调整营销节奏。",
+      "legalBasis": "",
+      "sourceText": "各国民俗与宗教礼仪指南；当地广告审查规范",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "文化与宗教禁忌库"
+    }
+  ],
+  "facts": [
+    {
+      "id": "MAG-SS-001",
+      "market": "MAG",
+      "kind": "fact",
+      "category": "语言与宗教",
+      "baselineClaim": "阿尔及利亚、摩洛哥、突尼斯：阿拉伯语为官方语言，法语为行政、商业与教育通用语；穆斯林为主，伊斯兰文化权重高",
+      "commonError": "误写法语为唯一官方语言、忽略宗教文化约束",
+      "sourceText": "各国外交概况与文化礼仪指南",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    }
+  ]
+}

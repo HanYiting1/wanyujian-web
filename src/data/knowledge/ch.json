@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.0",
+  "market": "CH",
+  "sourceFile": "法国及法语区-知识数据库（六库版）.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [
+    {
+      "id": "CH-WH-001",
+      "market": "CH",
+      "kind": "culture",
+      "category": "社会习俗",
+      "subcategory": "联邦刻板印象",
+      "riskLevel": "low",
+      "triggerDescription": "Généraliser tous les cantons / 对瑞士各州一概而论",
+      "triggers": [
+        "généraliser tous les cantons",
+        "对瑞士各州一概而论"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "瑞士为联邦制，法语、德语、意大利语区各州习俗与商业习惯差异明显，一刀切刻板印象易显不专业。",
+      "badExample": "文案笼统概括“瑞士人都……”，忽略州际与语言区差异。",
+      "goodExample": "按目标州/语言区细化表述，避免全国性刻板印象。",
+      "legalBasis": "",
+      "sourceText": "瑞士联邦多语言文化规范 ch.ch",
+      "sourceUrl": "ch.ch",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "文化与宗教禁忌库"
+    }
+  ],
+  "facts": [
+    {
+      "id": "CH-SS-001",
+      "market": "CH",
+      "kind": "fact",
+      "category": "基本盘",
+      "baselineClaim": "首都伯尔尼；货币瑞士法郎 CHF；官方语言法/德/意/罗曼什；法语区为日内瓦、沃州、瓦莱、弗里堡、纳沙泰尔等；时区 CET",
+      "commonError": "误写首都苏黎世、货币欧元",
+      "sourceText": "瑞士联邦政府 ch.ch",
+      "sourceUrl": "ch.ch",
+      "reviewStatus": "pending",
+      "timeSensitive": true,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    },
+    {
+      "id": "CH-SS-002",
+      "market": "CH",
+      "kind": "fact",
+      "category": "数字表达",
+      "baselineClaim": "瑞士法语：70 = septante，90 = nonante；80 在部分州作 huitante",
+      "commonError": "套用法国 quatre-vingt-dix",
+      "sourceText": "瑞士法语通行用法",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    },
+    {
+      "id": "CH-SS-003",
+      "market": "CH",
+      "kind": "fact",
+      "category": "法定假日",
+      "baselineClaim": "瑞士国庆日：8 月 1 日 Fête nationale suisse",
+      "commonError": "误写其他日期",
+      "sourceText": "瑞士联邦政府 ch.ch",
+      "sourceUrl": "ch.ch",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.0",
+  "market": "BE",
+  "sourceFile": "法国及法语区-知识数据库（六库版）.xlsx",
+  "reviewPolicy": "知识库提供风险线索和候选依据；所有条目目前均待人工审核。规则命中不是违法认定。模型必须根据上下文确认，且不得自造来源。",
+  "rules": [
+    {
+      "id": "BE-WH-001",
+      "market": "BE",
+      "kind": "culture",
+      "category": "社会习俗",
+      "subcategory": "语言社区",
+      "riskLevel": "medium",
+      "triggerDescription": "Rivalité communautaire FR/NL / 挑动荷语区与法语区对立",
+      "triggers": [
+        "rivalité communautaire fr/nl",
+        "挑动荷语区与法语区对立"
+      ],
+      "matchMode": "keyword_candidate",
+      "description": "比利时由荷语区、法语区及德语区组成，语言社区关系敏感，调侃或挑动区际对立易引发争议。",
+      "badExample": "文案调侃荷语区民众或暗示某语言区地位优劣。",
+      "goodExample": "保持语言中立，不比较或挑动语言社区对立。",
+      "legalBasis": "",
+      "sourceText": "比利时多语言社会文化规范",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "reviewNotes": "原表数据转换而来，需人工复核。",
+      "originSheet": "文化与宗教禁忌库"
+    }
+  ],
+  "facts": [
+    {
+      "id": "BE-SS-001",
+      "market": "BE",
+      "kind": "fact",
+      "category": "基本盘",
+      "baselineClaim": "首都布鲁塞尔；货币欧元；官方语言荷兰语、法语、德语；法语区为瓦隆大区及布鲁塞尔；时区 CET",
+      "commonError": "误写首都安特卫普、货币比利时法郎",
+      "sourceText": "比利时联邦政府 / 驻比使馆概况",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "timeSensitive": true,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    },
+    {
+      "id": "BE-SS-002",
+      "market": "BE",
+      "kind": "fact",
+      "category": "数字表达",
+      "baselineClaim": "比利时法语：70 = septante，90 = nonante，80 = quatre-vingts",
+      "commonError": "套用法国 soixante-dix / quatre-vingt-dix",
+      "sourceText": "比利时法语通行用法",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    },
+    {
+      "id": "BE-SS-003",
+      "market": "BE",
+      "kind": "fact",
+      "category": "法定假日",
+      "baselineClaim": "比利时国庆日：7 月 21 日 Fête nationale belge",
+      "commonError": "误写为 7 月 14 日法国国庆",
+      "sourceText": "比利时联邦政府",
+      "sourceUrl": "",
+      "reviewStatus": "pending",
+      "timeSensitive": false,
+      "reviewNotes": "原表数据转换而来，需人工复核来源及适用范围。",
+      "originSheet": "常识事实库"
+    }
+  ]
+}
