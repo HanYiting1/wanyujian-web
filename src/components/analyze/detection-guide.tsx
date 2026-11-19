@@ -45,17 +45,17 @@ export function DetectionGuide() {
       <div className="overflow-hidden rounded-[2rem] border border-white/80 bg-[linear-gradient(160deg,rgba(246,255,252,0.94),rgba(242,250,255,0.92))] p-5 shadow-[0_24px_60px_rgba(15,76,95,0.07)] backdrop-blur-sm sm:p-6">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-[10px] font-semibold tracking-[0.18em] text-aqua-700 uppercase">
+            <p className="text-[11px] font-semibold tracking-[0.18em] text-aqua-700 uppercase">
               What happens next
             </p>
-            <h2 className="mt-2 text-xl font-semibold tracking-tight text-deep-950 sm:text-2xl">
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-deep-950 sm:text-3xl">
               检测流程与输出
             </h2>
-            <p className="mt-2 max-w-sm text-xs leading-5 text-deep-500">
+            <p className="mt-2 max-w-sm text-sm leading-6 text-deep-500">
               上传并解析文件后，系统会自动完成规则候选与语义复核，生成可复核的风险报告。
             </p>
           </div>
-          <span className="hidden rounded-full border border-aqua-100 bg-white/80 px-2.5 py-1 text-[9px] whitespace-nowrap text-aqua-700 sm:inline-flex">
+          <span className="hidden rounded-full border border-aqua-100 bg-white/80 px-2.5 py-1 text-[10px] whitespace-nowrap text-aqua-700 sm:inline-flex">
             AI + KB
           </span>
         </div>
@@ -92,14 +92,14 @@ export function DetectionGuide() {
                   <Icon aria-hidden="true" className="size-3" />
                 </span>
                 <div className="flex flex-wrap items-baseline gap-x-2">
-                  <p className="text-sm font-semibold text-deep-900">
+                  <p className="text-base font-semibold text-deep-900">
                     {step.title}
                   </p>
-                  <span className="text-[9px] text-deep-400">
+                  <span className="text-[10px] text-deep-400">
                     {step.english}
                   </span>
                 </div>
-                <p className="mt-1 text-[11px] leading-5 text-deep-500">
+                <p className="mt-1 text-xs leading-6 text-deep-500">
                   {step.detail}
                 </p>
               </li>
@@ -112,10 +112,10 @@ export function DetectionGuide() {
             <Megaphone aria-hidden="true" className="size-4" />
           </span>
           <div className="min-w-0">
-            <p className="text-xs font-semibold text-deep-800">
+            <p className="text-sm font-semibold text-deep-800">
               更多能力持续上线
             </p>
-            <p className="mt-1 text-[10px] leading-5 text-deep-500">
+            <p className="mt-1 text-[11px] leading-5 text-deep-500">
               后续将支持更多国家与行业场景，并提供团队协作与报告管理。
             </p>
           </div>

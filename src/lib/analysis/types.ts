@@ -2,13 +2,14 @@ export type DocumentKind = "txt" | "docx" | "pdf";
 
 export type RiskLevel = "high" | "medium" | "low";
 
-export type MarketCode = "DE";
+export type MarketCode = string;
 
 export interface MarketOption {
   code: MarketCode;
   name: string;
   englishName: string;
   status: "available" | "coming-soon";
+  knowledgeSupported: boolean;
   dimensions: readonly string[];
 }
 

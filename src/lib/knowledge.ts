@@ -1,4 +1,18 @@
-import rawKnowledge from "@/data/knowledge/de.json";
+import beKnowledge from "@/data/knowledge/be.json";
+import chKnowledge from "@/data/knowledge/ch.json";
+import deKnowledge from "@/data/knowledge/de.json";
+import esKnowledge from "@/data/knowledge/es.json";
+import euKnowledge from "@/data/knowledge/eu.json";
+import frKnowledge from "@/data/knowledge/fr.json";
+import idKnowledge from "@/data/knowledge/id.json";
+import luKnowledge from "@/data/knowledge/lu.json";
+import magKnowledge from "@/data/knowledge/mag.json";
+import mcKnowledge from "@/data/knowledge/mc.json";
+import myKnowledge from "@/data/knowledge/my.json";
+import qcKnowledge from "@/data/knowledge/qc.json";
+import sgKnowledge from "@/data/knowledge/sg.json";
+import thKnowledge from "@/data/knowledge/th.json";
+import vnKnowledge from "@/data/knowledge/vn.json";
 import type {
   KnowledgeKind,
   KnowledgeReviewStatus,
@@ -70,12 +84,30 @@ interface TriggerMatch {
 }
 
 export interface KnowledgeContext {
+  market: MarketCode;
+  hasKnowledge: boolean;
   promptText: string;
   suppressedRuleIds: ReadonlySet<string>;
   suppressedTriggers: ReadonlySet<string>;
 }
 
-const raw = rawKnowledge as RawKnowledgeBase;
+const rawKnowledgeBases: RawKnowledgeBase[] = [
+  beKnowledge as RawKnowledgeBase,
+  chKnowledge as RawKnowledgeBase,
+  deKnowledge as RawKnowledgeBase,
+  esKnowledge as RawKnowledgeBase,
+  euKnowledge as RawKnowledgeBase,
+  frKnowledge as RawKnowledgeBase,
+  idKnowledge as RawKnowledgeBase,
+  luKnowledge as RawKnowledgeBase,
+  magKnowledge as RawKnowledgeBase,
+  mcKnowledge as RawKnowledgeBase,
+  myKnowledge as RawKnowledgeBase,
+  qcKnowledge as RawKnowledgeBase,
+  sgKnowledge as RawKnowledgeBase,
+  thKnowledge as RawKnowledgeBase,
+  vnKnowledge as RawKnowledgeBase,
+];
 
 function normalizeKind(value: string): KnowledgeKind {
   if (value === "culture" || value === "advertising" || value === "fact") {
@@ -86,11 +118,11 @@ function normalizeKind(value: string): KnowledgeKind {
 }
 
 function normalizeMarket(value: string): MarketCode {
-  if (value === "DE") {
-    return "DE";
+  const code = value.trim().toUpperCase();
+  if (!/^[A-Z]{2,4}$/.test(code)) {
+    throw new Error(`Unsupported knowledge market: ${value}`);
   }
-
-  throw new Error(`Unsupported knowledge market: ${value}`);
+  return code;
 }
 
 function normalizeRiskLevel(value: string | undefined): RiskLevel | null {
@@ -158,57 +190,70 @@ function normalizeTriggers(triggers: string[] | undefined): string[] {
 }
 
 function buildItems(): KnowledgeItem[] {
-  const ruleItems = raw.rules.map((rule) => ({
-    id: rule.id.trim().toUpperCase(),
-    market: normalizeMarket(rule.market),
-    kind: normalizeKind(rule.kind),
-    category: rule.category.trim(),
-    subcategory: normalizeOptionalText(rule.subcategory),
-    riskLevel: normalizeRiskLevel(rule.riskLevel),
-    description:
-      normalizeOptionalText(rule.description) ??
-      normalizeOptionalText(rule.triggerDescription) ??
-      rule.category,
-    commonError: null,
-    triggers: normalizeTriggers(rule.triggers),
-    reviewStatus: normalizeReviewStatus(rule.reviewStatus),
-    reviewNotes: normalizeOptionalText(rule.reviewNotes) ?? "",
-    sourceText: normalizeOptionalText(rule.sourceText),
-    sourceUrl: normalizeSourceUrl(rule.sourceUrl),
-    timeSensitive: false,
-  }));
+  const ruleItems = rawKnowledgeBases.flatMap((raw) =>
+    raw.rules.map((rule) => ({
+      id: rule.id.trim().toUpperCase(),
+      market: normalizeMarket(rule.market),
+      kind: normalizeKind(rule.kind),
+      category: rule.category.trim(),
+      subcategory: normalizeOptionalText(rule.subcategory),
+      riskLevel: normalizeRiskLevel(rule.riskLevel),
+      description:
+        normalizeOptionalText(rule.description) ??
+        normalizeOptionalText(rule.triggerDescription) ??
+        rule.category,
+      commonError: null,
+      triggers: normalizeTriggers(rule.triggers),
+      reviewStatus: normalizeReviewStatus(rule.reviewStatus),
+      reviewNotes: normalizeOptionalText(rule.reviewNotes) ?? "",
+      sourceText: normalizeOptionalText(rule.sourceText),
+      sourceUrl: normalizeSourceUrl(rule.sourceUrl),
+      timeSensitive: false,
+    })),
+  );
 
-  const factItems = raw.facts.map((fact) => ({
-    id: fact.id.trim().toUpperCase(),
-    market: normalizeMarket(fact.market),
-    kind: normalizeKind(fact.kind),
-    category: fact.category.trim(),
-    subcategory: null,
-    riskLevel: null,
-    description:
-      normalizeOptionalText(fact.baselineClaim) ??
-      normalizeOptionalText(fact.commonError) ??
-      fact.category,
-    commonError: normalizeOptionalText(fact.commonError),
-    triggers: [],
-    reviewStatus: normalizeReviewStatus(fact.reviewStatus),
-    reviewNotes: normalizeOptionalText(fact.reviewNotes) ?? "",
-    sourceText: normalizeOptionalText(fact.sourceText),
-    sourceUrl: normalizeSourceUrl(fact.sourceUrl),
-    timeSensitive: fact.timeSensitive === true,
-  }));
+  const factItems = rawKnowledgeBases.flatMap((raw) =>
+    raw.facts.map((fact) => ({
+      id: fact.id.trim().toUpperCase(),
+      market: normalizeMarket(fact.market),
+      kind: normalizeKind(fact.kind),
+      category: fact.category.trim(),
+      subcategory: null,
+      riskLevel: null,
+      description:
+        normalizeOptionalText(fact.baselineClaim) ??
+        normalizeOptionalText(fact.commonError) ??
+        fact.category,
+      commonError: normalizeOptionalText(fact.commonError),
+      triggers: [],
+      reviewStatus: normalizeReviewStatus(fact.reviewStatus),
+      reviewNotes: normalizeOptionalText(fact.reviewNotes) ?? "",
+      sourceText: normalizeOptionalText(fact.sourceText),
+      sourceUrl: normalizeSourceUrl(fact.sourceUrl),
+      timeSensitive: fact.timeSensitive === true,
+    })),
+  );
 
   return [...ruleItems, ...factItems];
 }
 
-const allItems = buildItems();
+const allItems = buildItems().filter(
+  (item, index, items) =>
+    items.findIndex(
+      (other) => other.market === item.market && other.id === item.id,
+    ) === index,
+);
 const itemById = new Map<string, KnowledgeItem>();
+const itemByMarketId = new Map<string, KnowledgeItem>();
 
 for (const item of allItems) {
-  if (itemById.has(item.id)) {
-    throw new Error(`Duplicate knowledge item id: ${item.id}`);
+  const marketKey = `${item.market}:${item.id}`;
+  if (!itemByMarketId.has(marketKey)) {
+    itemByMarketId.set(marketKey, item);
   }
-  itemById.set(item.id, item);
+  if (!itemById.has(item.id)) {
+    itemById.set(item.id, item);
+  }
 }
 
 function kindLabel(kind: KnowledgeKind): string {
@@ -270,11 +315,11 @@ function detectNegated(text: string, start: number, end: number): boolean {
   return NEGATION_PATTERN.test(before) || NEGATION_PATTERN.test(after);
 }
 
-function findMatches(text: string): TriggerMatch[] {
+function findMatches(text: string, items: KnowledgeItem[]): TriggerMatch[] {
   const searchText = text.toLowerCase();
   const matches: TriggerMatch[] = [];
 
-  for (const item of allItems) {
+  for (const item of items) {
     for (const trigger of item.triggers) {
       let fromIndex = 0;
 
@@ -340,12 +385,12 @@ function dedupeMatches(matches: TriggerMatch[]): TriggerMatch[] {
   return result.sort((first, second) => first.start - second.start);
 }
 
-function buildCatalogPrompt(): string {
+function buildCatalogPrompt(items: KnowledgeItem[]): string {
   const lines = [
     "本地知识库目录（所有条目 reviewStatus=pending，仅作候选复核；不同 kind 不能混为法律禁令）：",
   ];
 
-  for (const item of allItems) {
+  for (const item of items) {
     if (item.kind === "fact") {
       lines.push(
         `[事实参考] ${item.id} | ${item.category} | 基准事实：${item.description} | 常见错误：${item.commonError ?? "未提供"} | 时效性：${item.timeSensitive ? "是" : "否"} | 审核状态：${item.reviewStatus}`,
@@ -390,8 +435,17 @@ function buildCandidatePrompt(
   return lines.join("\n");
 }
 
-export function getKnowledgeItem(id: string): KnowledgeItem | null {
-  return itemById.get(id.trim().toUpperCase()) ?? null;
+export function getKnowledgeItem(
+  id: string,
+  market?: MarketCode,
+): KnowledgeItem | null {
+  const normalizedId = id.trim().toUpperCase();
+  if (market) {
+    return (
+      itemByMarketId.get(`${market.toUpperCase()}:${normalizedId}`) ?? null
+    );
+  }
+  return itemById.get(normalizedId) ?? null;
 }
 
 export function toRiskKnowledge(item: KnowledgeItem): RiskKnowledge {
@@ -412,12 +466,31 @@ export function toRiskKnowledge(item: KnowledgeItem): RiskKnowledge {
   };
 }
 
-export function buildKnowledgeContext(text: string): KnowledgeContext {
-  const matches = dedupeMatches(findMatches(text));
+export function buildKnowledgeContext(
+  text: string,
+  market: MarketCode,
+): KnowledgeContext {
+  const normalizedMarket = normalizeMarket(market);
+  const items = allItems.filter(
+    (item) => item.market === normalizedMarket,
+  );
+
+  if (items.length === 0) {
+    return {
+      market: normalizedMarket,
+      hasKnowledge: false,
+      promptText:
+        "该目标市场暂无本地知识库。只能进行 DeepSeek AI 语义初筛；不得编造本地规则、法规条款、来源或 ruleId；不确定内容必须标注“待人工核验”。",
+      suppressedRuleIds: new Set<string>(),
+      suppressedTriggers: new Set<string>(),
+    };
+  }
+
+  const matches = dedupeMatches(findMatches(text, items));
   const suppressedRuleIds = new Set<string>();
   const suppressedTriggers = new Set<string>();
 
-  for (const item of allItems) {
+  for (const item of items) {
     const ruleMatches = matches.filter((match) => match.ruleId === item.id);
     if (
       ruleMatches.length > 0 &&
@@ -431,7 +504,7 @@ export function buildKnowledgeContext(text: string): KnowledgeContext {
   }
 
   const promptText = [
-    buildCatalogPrompt(),
+    buildCatalogPrompt(items),
     "",
     buildCandidatePrompt(matches, suppressedRuleIds),
     "",
@@ -439,6 +512,8 @@ export function buildKnowledgeContext(text: string): KnowledgeContext {
   ].join("\n");
 
   return {
+    market: normalizedMarket,
+    hasKnowledge: true,
     promptText,
     suppressedRuleIds,
     suppressedTriggers,

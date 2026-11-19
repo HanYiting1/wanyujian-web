@@ -47,7 +47,7 @@ export function SiteHeader({ variant = "landing" }: SiteHeaderProps) {
 
         {isLanding ? (
           <div className="flex items-center gap-2 sm:gap-4">
-            <nav className="hidden items-center gap-6 text-sm text-deep-600 md:flex">
+            <nav className="hidden items-center gap-6 text-[15px] text-deep-600 md:flex">
               <Link
                 href="#how-it-works"
                 className="transition-colors hover:text-deep-950"
@@ -63,7 +63,7 @@ export function SiteHeader({ variant = "landing" }: SiteHeaderProps) {
             </nav>
             <Link
               href="#knowledge"
-              className="hidden rounded-full border border-aqua-200/70 bg-aqua-50/70 px-3 py-1 text-[11px] whitespace-nowrap text-aqua-800 transition-colors hover:bg-aqua-100 sm:inline-flex"
+              className="hidden rounded-full border border-aqua-200/70 bg-aqua-50/70 px-3 py-1 text-xs whitespace-nowrap text-aqua-800 transition-colors hover:bg-aqua-100 sm:inline-flex"
             >
               知识库增强
             </Link>

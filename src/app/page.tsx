@@ -24,54 +24,30 @@ import { Card } from "@/components/ui/card";
 import { MARKET_OPTIONS } from "@/lib/analysis/markets";
 import { cn } from "@/lib/utils";
 
-const germany = MARKET_OPTIONS[0];
+const allMarkets = MARKET_OPTIONS.map((market) => ({
+  code: market.code.toLowerCase(),
+  name: market.name,
+  englishName: market.englishName,
+  knowledgeSupported: market.knowledgeSupported,
+  status: "知识库检测",
+  detail: "文化语境 · 广告合规 · 语言歧义",
+}));
 
-const marketCoverage = [
-  {
-    code: "de",
-    name: germany.name,
-    englishName: germany.englishName,
-    status: "已开放",
-    available: true,
-    detail: "历史语境 · 广告合规 · 语言歧义",
-  },
-  {
-    code: "fr",
-    name: "法国",
-    englishName: "France",
-    status: "规划中",
-    available: false,
-    detail: "本地规则接入中",
-  },
-  {
-    code: "jp",
-    name: "日本",
-    englishName: "Japan",
-    status: "规划中",
-    available: false,
-    detail: "本地规则接入中",
-  },
-  {
-    code: "ae",
-    name: "阿联酋",
-    englishName: "UAE",
-    status: "规划中",
-    available: false,
-    detail: "本地规则接入中",
-  },
-  {
-    code: "es",
-    name: "西班牙",
-    englishName: "Spain",
-    status: "规划中",
-    available: false,
-    detail: "本地规则接入中",
-  },
-] as const;
+type MarketDisplay = (typeof allMarkets)[number];
 
-type MarketDisplay = (typeof marketCoverage)[number];
+const marketCoverage = allMarkets.filter(
+  (market) => market.knowledgeSupported,
+);
 
-const countryPositions: Record<MarketDisplay["code"], string> = {
+const aiDirectMarkets = allMarkets.filter(
+  (market) => !market.knowledgeSupported,
+);
+
+const globeMarkets = ["de", "fr", "es", "jp", "ae"]
+  .map((code) => allMarkets.find((market) => market.code === code))
+  .filter((market): market is MarketDisplay => market !== undefined);
+
+const countryPositions: Record<string, string> = {
   de: "left-[4%] top-[16%]",
   fr: "right-[2%] top-[14%]",
   es: "left-[1%] top-[46%]",
@@ -116,8 +92,8 @@ const workflow = [
     icon: Globe,
     title: "选择目标市场",
     description:
-      "从已开放的市场中选择目标市场，系统按当地文化语境、广告规则与语言习惯进行预检。更多市场正在接入本地知识。",
-    detail: "当前已开放：德国",
+      "选择目标市场后，系统会结合知识库条目、当地文化语境、广告规则与语言习惯进行检测，并输出可执行风险建议。",
+    detail: "31 个市场 · 知识库检测",
   },
   {
     step: "03",
@@ -187,6 +163,236 @@ function MarketFlag({
           <span className="flex-1 bg-[#dc2626]" />
         </span>
       )}
+      {code === "be" && (
+        <span className="flex h-full w-full">
+          <span className="w-1/3 bg-[#111827]" />
+          <span className="w-1/3 bg-[#facc15]" />
+          <span className="w-1/3 bg-[#dc2626]" />
+        </span>
+      )}
+      {code === "ch" && (
+        <span className="relative h-full w-full bg-[#dc2626]">
+          <span className="absolute left-1/2 top-1/2 h-[11px] w-[4px] -translate-x-1/2 -translate-y-1/2 rounded-sm bg-white" />
+          <span className="absolute left-1/2 top-1/2 h-[4px] w-[11px] -translate-x-1/2 -translate-y-1/2 rounded-sm bg-white" />
+        </span>
+      )}
+      {code === "eu" && (
+        <span className="relative flex h-full w-full items-center justify-center bg-[#1d3f8f]">
+          <span className="absolute inset-[3px] rounded-full border border-[#fcd34d]/25" />
+          <span className="text-[7px] leading-none text-[#fcd34d]">✦</span>
+          <span className="absolute top-[2px] text-[4px] text-[#fcd34d]">✦</span>
+          <span className="absolute bottom-[2px] text-[4px] text-[#fcd34d]">✦</span>
+          <span className="absolute left-[2px] text-[4px] text-[#fcd34d]">✦</span>
+          <span className="absolute right-[2px] text-[4px] text-[#fcd34d]">✦</span>
+        </span>
+      )}
+      {code === "id" && (
+        <span className="flex h-full w-full flex-col">
+          <span className="flex-1 bg-[#dc2626]" />
+          <span className="flex-1 bg-white" />
+        </span>
+      )}
+      {code === "lu" && (
+        <span className="flex h-full w-full flex-col">
+          <span className="flex-1 bg-[#dc2626]" />
+          <span className="flex-1 bg-white" />
+          <span className="flex-1 bg-[#60a5fa]" />
+        </span>
+      )}
+      {code === "mag" && (
+        <span className="relative flex h-full w-full items-center justify-center bg-[#0f766e]">
+          <span className="text-[8px] leading-none text-[#fcd34d]">☾</span>
+          <span className="absolute text-[5px] text-[#fcd34d]">★</span>
+        </span>
+      )}
+      {code === "mc" && (
+        <span className="flex h-full w-full flex-col">
+          <span className="flex-1 bg-[#dc2626]" />
+          <span className="flex-1 bg-white" />
+        </span>
+      )}
+      {code === "my" && (
+        <span className="relative h-full w-full bg-[repeating-linear-gradient(180deg,#dc2626_0_3px,#ffffff_3px_6px)]">
+          <span className="absolute left-0 top-0 flex h-1/2 w-1/2 items-center justify-center bg-[#1e3a8a]">
+            <span className="text-[6px] leading-none text-[#fcd34d]">☾</span>
+            <span className="absolute text-[4px] text-[#fcd34d]">★</span>
+          </span>
+        </span>
+      )}
+      {code === "qc" && (
+        <span className="relative h-full w-full bg-[#1e40af]">
+          <span className="absolute inset-x-0 top-1/2 h-[3px] -translate-y-1/2 bg-white" />
+          <span className="absolute inset-y-0 left-1/2 w-[3px] -translate-x-1/2 bg-white" />
+          <span className="absolute left-[3px] top-[2px] text-[5px] leading-none text-[#fcd34d]">✦</span>
+          <span className="absolute right-[3px] top-[2px] text-[5px] leading-none text-[#fcd34d]">✦</span>
+          <span className="absolute bottom-[2px] left-[3px] text-[5px] leading-none text-[#fcd34d]">✦</span>
+          <span className="absolute right-[3px] bottom-[2px] text-[5px] leading-none text-[#fcd34d]">✦</span>
+        </span>
+      )}
+      {code === "sg" && (
+        <span className="flex h-full w-full flex-col">
+          <span className="relative flex flex-1 items-center gap-0.5 bg-[#dc2626] pl-2 text-[#ffffff]">
+            <span className="text-[7px] leading-none">☾</span>
+            <span className="text-[5px] leading-none">★</span>
+          </span>
+          <span className="flex-1 bg-white" />
+        </span>
+      )}
+      {code === "th" && (
+        <span className="flex h-full w-full flex-col">
+          <span className="flex-1 bg-[#dc2626]" />
+          <span className="flex-1 bg-white" />
+          <span className="flex-[2] bg-[#1e3a8a]" />
+          <span className="flex-1 bg-white" />
+          <span className="flex-1 bg-[#dc2626]" />
+        </span>
+      )}
+      {code === "vn" && (
+        <span className="flex h-full w-full items-center justify-center bg-[#dc2626]">
+          <span className="text-[8px] leading-none text-[#fcd34d]">★</span>
+        </span>
+      )}
+      {code === "us" && (
+        <span className="relative h-full w-full bg-[repeating-linear-gradient(180deg,#dc2626_0_2px,#ffffff_2px_4px)]">
+          <span className="absolute left-0 top-0 h-1/2 w-1/2 bg-[#1e3a8a]" />
+          <span className="absolute left-[3px] top-[2px] text-[4px] leading-none text-white">✦</span>
+          <span className="absolute left-[6px] top-[7px] text-[3px] leading-none text-white">✦</span>
+          <span className="absolute left-[3px] bottom-[3px] text-[3px] leading-none text-white">✦</span>
+        </span>
+      )}
+      {code === "gb" && (
+        <span className="relative h-full w-full overflow-hidden bg-[#1e3a8a]">
+          <span className="absolute inset-0 bg-[linear-gradient(26deg,transparent_44%,#ffffff_44%,#ffffff_56%,transparent_56%),linear-gradient(-26deg,transparent_44%,#ffffff_44%,#ffffff_56%,transparent_56%)]" />
+          <span className="absolute inset-x-0 top-1/2 h-[5px] -translate-y-1/2 bg-white" />
+          <span className="absolute inset-y-0 left-1/2 w-[5px] -translate-x-1/2 bg-white" />
+          <span className="absolute inset-x-0 top-1/2 h-[3px] -translate-y-1/2 bg-[#dc2626]" />
+          <span className="absolute inset-y-0 left-1/2 w-[3px] -translate-x-1/2 bg-[#dc2626]" />
+        </span>
+      )}
+      {code === "it" && (
+        <span className="flex h-full w-full">
+          <span className="w-1/3 bg-[#15803d]" />
+          <span className="w-1/3 bg-white" />
+          <span className="w-1/3 bg-[#dc2626]" />
+        </span>
+      )}
+      {code === "nl" && (
+        <span className="flex h-full w-full flex-col">
+          <span className="flex-1 bg-[#dc2626]" />
+          <span className="flex-1 bg-white" />
+          <span className="flex-1 bg-[#1e3a8a]" />
+        </span>
+      )}
+      {code === "kr" && (
+        <span className="flex h-full w-full items-center justify-center bg-white">
+          <span className="size-3.5 -rotate-12 rounded-full bg-[linear-gradient(90deg,#dc2626_50%,#1d4ed8_50%)]" />
+        </span>
+      )}
+      {code === "sa" && (
+        <span className="relative flex h-full w-full flex-col justify-center bg-[#15803d] px-1">
+          <span className="h-[2px] w-full rounded-full bg-white" />
+          <span className="mt-1 h-[2px] w-3/4 rounded-full bg-white" />
+        </span>
+      )}
+      {code === "ca" && (
+        <span className="flex h-full w-full">
+          <span className="w-1/4 bg-[#dc2626]" />
+          <span className="flex w-1/2 items-center justify-center bg-white text-[7px] leading-none text-[#dc2626]">
+            ❖
+          </span>
+          <span className="w-1/4 bg-[#dc2626]" />
+        </span>
+      )}
+      {code === "au" && (
+        <span className="relative h-full w-full bg-[#1e3a8a]">
+          <span className="absolute left-0 top-0 h-1/2 w-1/2 bg-[#1e3a8a]">
+            <span className="absolute left-1/2 top-1/2 h-[2px] w-full -translate-x-1/2 -translate-y-1/2 bg-white" />
+            <span className="absolute left-1/2 top-1/2 h-full w-[2px] -translate-x-1/2 -translate-y-1/2 bg-white" />
+          </span>
+          <span className="absolute right-[4px] top-[3px] text-[4px] leading-none text-white">✦</span>
+          <span className="absolute right-[3px] bottom-[4px] text-[5px] leading-none text-white">✦</span>
+          <span className="absolute left-[4px] bottom-[3px] text-[3px] leading-none text-white">✦</span>
+        </span>
+      )}
+      {code === "br" && (
+        <span className="relative flex h-full w-full items-center justify-center bg-[#15803d]">
+          <span className="size-3 rotate-45 bg-[#facc15]" />
+          <span className="absolute size-1.5 rounded-full bg-[#1e3a8a]" />
+        </span>
+      )}
+      {code === "mx" && (
+        <span className="flex h-full w-full">
+          <span className="w-1/3 bg-[#15803d]" />
+          <span className="flex w-1/3 items-center justify-center bg-white text-[6px] text-[#7c2d12]">
+            ❖
+          </span>
+          <span className="w-1/3 bg-[#dc2626]" />
+        </span>
+      )}
+      {code === "in" && (
+        <span className="flex h-full w-full flex-col">
+          <span className="flex-1 bg-[#f59e0b]" />
+          <span className="relative flex flex-1 items-center justify-center bg-white">
+            <span className="absolute size-1.5 rounded-full border border-[#1d4ed8]" />
+          </span>
+          <span className="flex-1 bg-[#15803d]" />
+        </span>
+      )}
+      {code === "pl" && (
+        <span className="flex h-full w-full flex-col">
+          <span className="flex-1 bg-white" />
+          <span className="flex-1 bg-[#dc2626]" />
+        </span>
+      )}
+      {code === "se" && (
+        <span className="relative h-full w-full bg-[#1e3a8a]">
+          <span className="absolute inset-y-0 left-1/2 w-[4px] -translate-x-1/2 bg-[#facc15]" />
+          <span className="absolute inset-x-0 top-1/2 h-[4px] -translate-y-1/2 bg-[#facc15]" />
+        </span>
+      )}
+      {code === "tr" && (
+        <span className="relative flex h-full w-full items-center justify-center bg-[#dc2626]">
+          <span className="text-[8px] leading-none text-white">☾</span>
+          <span className="absolute text-[5px] leading-none text-white">★</span>
+        </span>
+      )}
+      {![
+        "de",
+        "fr",
+        "jp",
+        "ae",
+        "es",
+        "be",
+        "ch",
+        "eu",
+        "id",
+        "lu",
+        "mag",
+        "mc",
+        "my",
+        "qc",
+        "sg",
+        "th",
+        "vn",
+        "us",
+        "gb",
+        "it",
+        "nl",
+        "kr",
+        "sa",
+        "ca",
+        "au",
+        "br",
+        "mx",
+        "in",
+        "pl",
+        "se",
+        "tr",
+      ].includes(code) && (
+        <span className="grid h-full w-full place-items-center bg-deep-50 font-mono text-[6px] font-semibold tracking-wide text-deep-500">
+          {code.toUpperCase()}
+        </span>
+      )}
     </span>
   );
 }
@@ -201,16 +407,16 @@ function CountryChip({
   return (
     <div
       className={cn(
-        "absolute z-10 hidden items-center gap-2 rounded-xl border border-white/80 bg-white/90 px-2.5 py-2 shadow-[0_12px_30px_rgba(20,80,100,0.10)] backdrop-blur-sm sm:flex",
+        "absolute z-10 hidden items-center gap-2 rounded-xl border border-white/80 bg-white/90 px-2.5 py-2 shadow-[0_12px_30px_rgba(20,80,100,0.10)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(20,80,100,0.14)] sm:flex",
         className,
       )}
     >
       <MarketFlag code={market.code} className="size-7" />
       <div className="min-w-0">
-        <p className="text-[11px] leading-none font-semibold text-deep-900">
+        <p className="text-[12px] leading-none font-semibold text-deep-900">
           {market.name}
         </p>
-        <p className="mt-1 text-[9px] leading-none text-deep-400">
+        <p className="mt-1 text-[11px] leading-none text-deep-400">
           {market.englishName}
         </p>
       </div>
@@ -230,7 +436,7 @@ function FeatureTag({
   return (
     <span
       className={cn(
-        "absolute z-10 hidden items-center gap-1.5 rounded-full border border-aqua-200/70 bg-white/85 px-3 py-1.5 text-[10px] font-medium text-deep-600 shadow-[0_8px_24px_rgba(15,76,95,0.08)] backdrop-blur-sm lg:inline-flex",
+        "absolute z-10 hidden items-center gap-1.5 rounded-full border border-aqua-200/70 bg-white/85 px-3 py-1.5 text-[11px] font-medium text-deep-600 shadow-[0_8px_24px_rgba(15,76,95,0.08)] backdrop-blur-sm transition-colors hover:border-aqua-300 hover:text-deep-900 lg:inline-flex",
         className,
       )}
     >
@@ -365,14 +571,19 @@ function GlobeVisual() {
           </div>
 
           <div className="absolute left-1/2 top-[48%] z-10 -translate-x-1/2 -translate-y-1/2">
-            <div className="rounded-2xl border border-white/90 bg-white/90 p-1.5 shadow-[0_16px_40px_rgba(15,76,95,0.16)] backdrop-blur-sm">
-              <div className="grid size-14 place-items-center rounded-xl bg-gradient-to-br from-aqua-300 via-aqua-400 to-aqua-500 text-[17px] font-semibold tracking-[-0.08em] text-deep-950">
-                文A
+            <div className="relative rounded-full border border-white/90 bg-white/90 p-1.5 shadow-[0_16px_40px_rgba(15,76,95,0.16)] backdrop-blur-sm">
+              <span
+                aria-hidden="true"
+                className="absolute -inset-2 rounded-full border border-aqua-300/35 motion-safe:animate-pulse"
+              />
+              <div className="grid size-12 place-items-center rounded-full bg-deep-950 text-aqua-300">
+                <Languages className="size-5" strokeWidth={1.9} />
               </div>
+              <span className="absolute -right-0.5 -bottom-0.5 size-2.5 rounded-full bg-aqua-400 ring-2 ring-white" />
             </div>
           </div>
 
-          {marketCoverage.map((market) => (
+          {globeMarkets.map((market) => (
             <CountryChip
               key={market.code}
               market={market}
@@ -391,10 +602,10 @@ function GlobeVisual() {
         </div>
 
         <div className="relative z-10 mt-2 flex flex-wrap justify-center gap-1.5 sm:hidden">
-          {marketCoverage.map((market) => (
+          {globeMarkets.map((market) => (
             <span
               key={market.code}
-              className="inline-flex items-center gap-1 rounded-full border border-white/80 bg-white/80 px-2 py-1 text-[9px] text-deep-600"
+              className="inline-flex items-center gap-1 rounded-full border border-white/80 bg-white/80 px-2 py-1 text-[11px] text-deep-600"
             >
               <MarketFlag code={market.code} className="size-5" />
               {market.name}
@@ -416,10 +627,10 @@ function GlobeVisual() {
                     <Icon aria-hidden="true" className="size-3.5" />
                   </span>
                   <div className="min-w-0">
-                    <p className="text-[10px] font-semibold text-deep-800">
+                    <p className="text-[11px] font-semibold text-deep-800">
                       {step.title}
                     </p>
-                    <p className="truncate text-[9px] text-deep-400">
+                    <p className="truncate text-[11px] text-deep-400">
                       {step.detail}
                     </p>
                   </div>
@@ -456,24 +667,24 @@ export default function Home() {
           />
 
           <div className="relative mx-auto grid max-w-[92rem] gap-12 px-4 pt-28 pb-16 sm:px-6 sm:pt-32 lg:px-8 lg:pt-36 lg:pb-24 xl:grid-cols-[0.95fr_1.05fr] xl:items-center xl:gap-16">
-            <div className="max-w-[36rem]">
-              <div className="inline-flex items-center gap-2 rounded-full border border-aqua-200/70 bg-white/60 px-3.5 py-1.5 text-[10px] font-medium tracking-[0.16em] text-aqua-800 uppercase backdrop-blur-sm">
-                <span className="size-1.5 rounded-full bg-aqua-500" />
+            <div className="max-w-[38.5rem]">
+              <div className="inline-flex items-center gap-2 rounded-full border border-aqua-200/70 bg-white/60 px-4 py-1.5 text-[11px] font-medium tracking-[0.16em] text-aqua-800 uppercase backdrop-blur-sm">
+                <span className="size-1.5 rounded-full bg-aqua-500 motion-safe:animate-pulse" />
                 Multilingual pre-flight check
               </div>
 
-              <h1 className="mt-7 text-[2.4rem] leading-[1.14] font-semibold tracking-[-0.045em] text-deep-950 sm:text-5xl lg:text-[3.4rem]">
+              <h1 className="mt-7 text-[2.55rem] leading-[1.12] font-semibold tracking-[-0.045em] text-deep-950 sm:text-5xl lg:text-[3.5rem]">
                 <span className="block">帮助品牌在发布前</span>
                 <span className="mt-1 block text-[#2563eb]">
                   识别跨文化与合规风险。
                 </span>
               </h1>
 
-              <p className="mt-5 text-base font-medium text-deep-700 sm:text-lg">
+              <p className="mt-5 text-lg font-medium text-deep-700 sm:text-xl">
                 多语言内容预检 · 文化语境分析 · 合规与表达风险评估
               </p>
 
-              <p className="mt-4 max-w-[34rem] text-sm leading-7 text-deep-500 sm:text-[15px]">
+              <p className="mt-4 max-w-[35rem] text-[15px] leading-8 text-deep-500 sm:text-base">
                 面向出海与全球传播的内容风险预检平台。上传一份文案，结合目标市场的历史语境、广告合规与语言歧义，快速识别潜在风险并生成可执行建议，让品牌沟通更安全、更恰当、更有效。
               </p>
 
@@ -482,41 +693,46 @@ export default function Home() {
                   href="/analyze"
                   className={cn(
                     buttonVariants({ size: "lg" }),
-                    "h-12 rounded-xl bg-[#2563eb] px-6 text-[15px] font-semibold text-white shadow-[0_12px_30px_rgba(37,99,235,0.22)] hover:bg-[#1d4ed8]",
+                    "group h-12 rounded-xl bg-[#2563eb] px-6 text-base font-semibold text-white shadow-[0_12px_30px_rgba(37,99,235,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#1d4ed8]",
                   )}
                 >
                   开始检测
-                  <ArrowRight aria-hidden="true" className="size-4" />
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                  />
                 </Link>
                 <Link
                   href="#how-it-works"
                   className={cn(
                     buttonVariants({ variant: "outline", size: "lg" }),
-                    "h-12 rounded-xl border-deep-200 bg-white/70 px-6 text-[15px] text-deep-800 hover:bg-white",
+                    "h-12 rounded-xl border-deep-200 bg-white/70 px-6 text-base text-deep-800 transition-colors hover:bg-white",
                   )}
                 >
                   了解工作方式
                 </Link>
               </div>
 
-              <div className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-deep-500">
+              <div className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-1 text-[15px] text-deep-500">
                 <Globe
                   aria-hidden="true"
-                  className="size-3.5 text-aqua-700"
+                  className="size-4 text-aqua-700"
                 />
-                <span className="font-medium text-deep-700">德国已开放</span>
+                <span className="font-medium text-deep-700">
+                  {allMarkets.length} 个市场支持知识库检测
+                </span>
                 <span className="text-deep-300">·</span>
-                <span>法国 / 日本 / 阿联酋 / 西班牙规划中</span>
+                <span>文化与合规风险预检</span>
                 <Link
                   href="#markets"
                   className="inline-flex items-center gap-0.5 text-aqua-800 transition-colors hover:text-aqua-900"
                 >
                   查看市场
-                  <ChevronRight aria-hidden="true" className="size-3" />
+                  <ChevronRight aria-hidden="true" className="size-3.5" />
                 </Link>
               </div>
 
-              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-deep-400">
+              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-deep-400">
                 <span className="inline-flex items-center gap-1.5">
                   <LockKeyhole aria-hidden="true" className="size-3" />
                   解析后不保存
@@ -536,13 +752,13 @@ export default function Home() {
         <section id="how-it-works" className="scroll-mt-24 bg-white">
           <div className="mx-auto max-w-[92rem] px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
             <div className="max-w-3xl">
-              <div className="inline-flex w-fit items-center rounded-full border border-aqua-100 bg-aqua-50 px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-aqua-800 uppercase">
+              <div className="inline-flex w-fit items-center rounded-full border border-aqua-100 bg-aqua-50 px-3 py-1 text-[11px] font-semibold tracking-[0.16em] text-aqua-800 uppercase">
                 How it works
               </div>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-deep-950 sm:text-4xl lg:text-[2.8rem]">
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-deep-950 sm:text-4xl lg:text-[3rem]">
                 不是聊天，是一份可执行的预检报告。
               </h2>
-              <p className="mt-4 text-[15px] leading-7 text-deep-600">
+              <p className="mt-4 text-base leading-8 text-deep-600">
                 每一条风险都对应明确的原文位置、判断依据和修改方向。预检结果可以直接进入文案评审，而不是停在对话记录里。
               </p>
             </div>
@@ -554,23 +770,23 @@ export default function Home() {
                 return (
                   <Card
                     key={item.step}
-                    className="gap-0 overflow-hidden rounded-[1.7rem] border border-deep-100/80 bg-white p-6 shadow-[0_20px_50px_rgba(15,76,95,0.04)] ring-0 transition-shadow hover:shadow-[0_24px_60px_rgba(15,76,95,0.07)]"
+                    className="group gap-0 overflow-hidden rounded-[1.7rem] border border-deep-100/80 bg-white p-6 shadow-[0_20px_50px_rgba(15,76,95,0.04)] ring-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_64px_rgba(15,76,95,0.09)]"
                   >
                     <div className="flex items-start justify-between gap-3">
-                      <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-aqua-50 text-aqua-700">
+                      <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-aqua-50 text-aqua-700 transition-transform duration-300 group-hover:scale-105">
                         <Icon aria-hidden="true" className="size-5" />
                       </span>
-                      <span className="font-mono text-[11px] tracking-[0.16em] text-aqua-300">
+                      <span className="font-mono text-xs tracking-[0.16em] text-aqua-300">
                         {item.step}
                       </span>
                     </div>
-                    <h3 className="mt-5 text-lg font-semibold text-deep-950">
+                    <h3 className="mt-5 text-xl font-semibold text-deep-950">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-deep-600">
+                    <p className="mt-2 text-[15px] leading-7 text-deep-600">
                       {item.description}
                     </p>
-                    <div className="mt-5 flex items-center gap-2 border-t border-deep-100 pt-4 text-[11px] text-deep-400">
+                    <div className="mt-5 flex items-center gap-2 border-t border-deep-100 pt-4 text-xs text-deep-400">
                       <FileText aria-hidden="true" className="size-3.5" />
                       {item.detail}
                     </div>
@@ -588,69 +804,84 @@ export default function Home() {
           <div className="mx-auto max-w-[92rem] px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
             <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:gap-16">
               <div>
-                <div className="inline-flex w-fit items-center rounded-full border border-aqua-100 bg-white/70 px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-aqua-800 uppercase">
+                <div className="inline-flex w-fit items-center rounded-full border border-aqua-100 bg-white/70 px-3 py-1 text-[11px] font-semibold tracking-[0.16em] text-aqua-800 uppercase">
                   Market coverage
                 </div>
-                <h2 className="mt-4 text-3xl font-semibold tracking-tight text-deep-950 sm:text-4xl">
+                <h2 className="mt-4 text-3xl font-semibold tracking-tight text-deep-950 sm:text-4xl lg:text-[2.8rem]">
                   支持市场
                 </h2>
-                <p className="mt-4 max-w-lg text-[15px] leading-7 text-deep-600">
-                  覆盖主要出海市场的文化语境、广告合规与语言歧义。已接入知识与检测链路的德国市场先行开放，其他市场在完成本地规则与知识库接入后陆续开放。
+                <p className="mt-4 max-w-lg text-base leading-7 text-deep-600">
+                  覆盖 {allMarkets.length} 个市场，统一使用知识库检测。结合当地文化语境、广告合规与语言歧义，识别潜在风险并生成可执行建议。
                 </p>
-                <div className="mt-5 flex items-start gap-2 rounded-xl border border-white/80 bg-white/55 px-3.5 py-3 text-xs leading-5 text-deep-500">
+                <div className="mt-5 flex items-start gap-2 rounded-xl border border-white/80 bg-white/55 px-3.5 py-3 text-sm leading-6 text-deep-500">
                   <Info
                     aria-hidden="true"
-                    className="mt-0.5 size-3.5 shrink-0 text-aqua-700"
+                    className="mt-0.5 size-4 shrink-0 text-aqua-700"
                   />
-                  仅德国已开放；其他市场状态为规划中，当前不会出现在检测选项中。
+                  所有市场均使用知识库检测；检测结果需人工复核。
                 </div>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                 {marketCoverage.map((market) => (
                   <div
                     key={market.code}
-                    className={cn(
-                      "flex min-h-[8.5rem] flex-col justify-between rounded-2xl border bg-white/85 p-3.5 shadow-[0_12px_30px_rgba(15,76,95,0.04)]",
-                      market.available
-                        ? "border-aqua-200"
-                        : "border-white/80",
-                    )}
+                    className="group flex min-h-[9rem] flex-col justify-between rounded-2xl border border-white/80 bg-white/85 p-3.5 shadow-[0_12px_30px_rgba(15,76,95,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-aqua-300 hover:shadow-[0_18px_36px_rgba(15,76,95,0.08)]"
                   >
                     <div className="flex items-center gap-2.5">
                       <MarketFlag
                         code={market.code}
-                        className="size-9"
+                        className="size-9 transition-transform duration-300 group-hover:scale-105"
                       />
                       <div className="min-w-0">
-                        <p className="text-sm leading-none font-semibold text-deep-900">
+                        <p className="text-base leading-none font-semibold text-deep-900">
                           {market.name}
                         </p>
-                        <p className="mt-1 text-[9px] leading-none text-deep-400">
+                        <p className="mt-1 text-[11px] leading-none text-deep-400">
                           {market.englishName}
                         </p>
                       </div>
                     </div>
                     <div className="mt-3">
-                      <p className="text-[9px] leading-4 text-deep-400">
+                      <p className="text-[11px] leading-4 text-deep-400">
                         {market.detail}
                       </p>
                       <Badge
                         variant="outline"
-                        className={cn(
-                          "mt-2 text-[9px]",
-                          market.available
-                            ? "border-aqua-200 bg-aqua-50 text-aqua-800"
-                            : "border-deep-100 bg-deep-50 text-deep-500",
-                        )}
+                        className="mt-2 border-aqua-200 bg-aqua-50 text-[11px] text-aqua-800"
                       >
-                        {market.available && (
-                          <Check aria-hidden="true" className="size-2.5" />
-                        )}
+                        <Check aria-hidden="true" className="size-2.5" />
                         {market.status}
                       </Badge>
                     </div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-white/80 bg-white/60 p-4 shadow-[0_14px_34px_rgba(15,76,95,0.04)] sm:p-5">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <p className="text-[15px] font-semibold text-deep-900">
+                    更多市场
+                  </p>
+                </div>
+                <Badge
+                  variant="outline"
+                  className="border-amber-200 bg-amber-50 text-[11px] text-amber-700"
+                >
+                  {aiDirectMarkets.length} 个市场
+                </Badge>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {aiDirectMarkets.map((market) => (
+                  <span
+                    key={market.code}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-deep-100 bg-white/80 px-2.5 py-1.5 text-xs text-deep-600 transition-all duration-300 hover:-translate-y-0.5 hover:border-aqua-200 hover:text-deep-900"
+                  >
+                    <MarketFlag code={market.code} className="size-5" />
+                    {market.name}
+                  </span>
                 ))}
               </div>
             </div>
@@ -660,15 +891,15 @@ export default function Home() {
               className="mt-10 grid scroll-mt-24 gap-6 rounded-[2rem] border border-white/80 bg-white/70 p-6 shadow-[0_20px_50px_rgba(15,76,95,0.04)] backdrop-blur-sm sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
             >
               <div>
-                <div className="inline-flex w-fit items-center rounded-full border border-aqua-100 bg-aqua-50 px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-aqua-800 uppercase">
+                <div className="inline-flex w-fit items-center rounded-full border border-aqua-100 bg-aqua-50 px-3 py-1 text-[11px] font-semibold tracking-[0.16em] text-aqua-800 uppercase">
                   Knowledge enhancement
                 </div>
-                <h3 className="mt-3 text-2xl font-semibold tracking-tight text-deep-950">
+                <h3 className="mt-3 text-3xl font-semibold tracking-tight text-deep-950">
                   知识库增强，不是让模型凭空判断。
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-deep-600">
-                  德国本地知识库先做规则候选，再由 DeepSeek
-                  做上下文复核。来源只从本地知识库关联，并在报告中标注审核状态。
+                <p className="mt-3 text-[15px] leading-7 text-deep-600">
+                  {allMarkets.length} 个市场统一使用知识库检测。知识库条目先做规则候选，再由
+                  DeepSeek 做上下文复核；来源只从知识库关联，并在报告中标注审核状态。
                 </p>
               </div>
               <div className="grid gap-2 sm:grid-cols-3">
@@ -699,10 +930,10 @@ export default function Home() {
                       <span className="grid size-8 place-items-center rounded-lg bg-aqua-50 text-aqua-700">
                         <Icon aria-hidden="true" className="size-4" />
                       </span>
-                      <p className="mt-3 text-xs font-semibold text-deep-800">
+                      <p className="mt-3 text-[13px] font-semibold text-deep-800">
                         {item.title}
                       </p>
-                      <p className="mt-1 text-[10px] leading-5 text-deep-500">
+                      <p className="mt-1 text-[11px] leading-5 text-deep-500">
                         {item.detail}
                       </p>
                     </div>
@@ -722,15 +953,15 @@ export default function Home() {
               />
               <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div className="max-w-2xl">
-                  <p className="text-[10px] font-semibold tracking-[0.18em] text-aqua-800 uppercase">
+                  <p className="text-[11px] font-semibold tracking-[0.18em] text-aqua-800 uppercase">
                     Start with one document
                   </p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-deep-950 sm:text-3xl">
+                  <h2 className="mt-2 text-3xl font-semibold tracking-tight text-deep-950 sm:text-4xl">
                     让下一条出海文案，先过一遍风险预检。
                   </h2>
-                  <p className="mt-2 text-sm leading-6 text-deep-500">
+                  <p className="mt-2 text-[15px] leading-7 text-deep-500">
                     支持真实文件解析、DeepSeek AI
-                    初筛与本地知识库复核。结果需人工复核，不构成法律意见。
+                    初筛与知识库检测。结果需人工复核，不构成法律意见。
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 sm:flex-row lg:flex-col lg:items-end">
@@ -738,13 +969,13 @@ export default function Home() {
                     href="/analyze"
                     className={cn(
                       buttonVariants({ size: "lg" }),
-                      "h-11 shrink-0 rounded-xl bg-[#2563eb] px-5 text-sm font-semibold text-white shadow-[0_12px_26px_rgba(37,99,235,0.2)] hover:bg-[#1d4ed8]",
+                      "h-11 shrink-0 rounded-xl bg-[#2563eb] px-5 text-[15px] font-semibold text-white shadow-[0_12px_26px_rgba(37,99,235,0.2)] transition-all hover:-translate-y-0.5 hover:bg-[#1d4ed8]",
                     )}
                   >
                     开始检测
                     <ArrowRight aria-hidden="true" className="size-4" />
                   </Link>
-                  <span className="text-[10px] text-deep-400">
+                  <span className="text-[11px] text-deep-400">
                     文件解析后不保存 · 结果需人工复核
                   </span>
                 </div>
@@ -776,10 +1007,10 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <Brand />
             <span className="hidden h-4 w-px bg-deep-200 sm:block" />
-            <p className="text-xs text-deep-500">多语言跨文化 AI 风险预检</p>
+            <p className="text-[13px] text-deep-500">多语言跨文化 AI 风险预检</p>
           </div>
-          <p className="max-w-xl text-xs leading-5 text-deep-400">
-            AI 检测调用 DeepSeek 并结合本地知识库，结果需人工复核；文件仅用于文本解析，解析后不保存；检测结果不构成法律或合规意见。
+          <p className="max-w-xl text-[13px] leading-6 text-deep-400">
+            AI 检测调用 DeepSeek 并执行知识库检测；结果需人工复核；文件仅用于文本解析，解析后不保存；检测结果不构成法律或合规意见。
           </p>
         </div>
       </footer>

@@ -5,7 +5,12 @@ import { analyzeMarketingContent, LlmError } from "@/lib/llm";
 
 const analyzeRequestSchema = z.object({
   text: z.string().trim().min(1).max(10_000),
-  market: z.literal("DE"),
+  market: z
+    .string()
+    .trim()
+    .min(2)
+    .max(8)
+    .transform((value) => value.toUpperCase()),
   contentType: z.string().trim().min(1).max(50),
 });
 
@@ -23,7 +28,7 @@ function invalidInputMessage(issues: z.core.$ZodIssue[]): string {
   const field = issue?.path[0];
 
   if (field === "market") {
-    return "第一版仅支持德国市场（DE）。";
+    return "market 必须是 2–8 个字符的市场代码。";
   }
 
   if (field === "text") {
@@ -62,6 +67,7 @@ export async function POST(request: Request) {
     const result = await analyzeMarketingContent({
       text: parsed.data.text,
       contentType: parsed.data.contentType,
+      market: parsed.data.market,
     });
 
     const payload: AnalyzeApiSuccess = {

@@ -30,6 +30,7 @@ import type {
   SelectedDocument,
 } from "@/lib/analysis/types";
 import { formatFileSize } from "@/lib/analysis/files";
+import { getMarketName } from "@/lib/markets/catalog";
 import { cn } from "@/lib/utils";
 
 interface RealReportPanelProps {
@@ -205,7 +206,7 @@ function KnowledgeReference({ knowledge }: { knowledge: RiskKnowledge }) {
               className="inline-flex items-center gap-1 text-aqua-700 underline decoration-aqua-300 underline-offset-2 hover:text-aqua-800"
             >
               <ExternalLink aria-hidden="true" className="size-3" />
-              查看本地知识库来源
+              查看知识库来源
             </a>
             <span className="hidden break-all text-deep-400 print:inline">
               ({knowledge.sourceUrl})
@@ -529,7 +530,7 @@ function DisclaimerSection() {
       </div>
       <div className="mt-2 grid gap-2 text-[10px] leading-5 text-deep-500 sm:grid-cols-2">
         <p>
-          本报告基于公开资料、本地知识库与 AI 语义初筛生成，知识库覆盖范围和文化判断具有局限性，可能存在遗漏或误判。
+          本报告基于公开资料、知识库与 AI 语义初筛生成，知识库覆盖范围和文化判断具有局限性，可能存在遗漏或误判。
         </p>
         <p>
           预检不替代当地律师或专业合规机构的审核；用户应在实际发布前自行评估潜在风险，报告不构成法律意见或合规保证。
@@ -561,6 +562,7 @@ export function RealReportPanel({
   }
 
   const result = state.result;
+  const marketName = getMarketName(result.market);
   const counts: Record<RiskLevel, number> = {
     high: 0,
     medium: 0,
@@ -604,7 +606,7 @@ export function RealReportPanel({
       ? copyFeedback.status
       : null;
 
-  const reportTitle = `德国市场${contentTypeLabel(result.contentType)}文化与合规风险报告`;
+  const reportTitle = `${marketName}市场${contentTypeLabel(result.contentType)}文化与合规风险报告`;
   const fileType = document ? document.kind.toUpperCase() : "未提供";
   const fileSize = document
     ? formatFileSize(document.file.size)
@@ -703,7 +705,7 @@ export function RealReportPanel({
                 <div>
                   <p className="text-[9px] text-deep-400">目标市场</p>
                   <p className="mt-0.5 text-[11px] font-medium text-deep-700">
-                    德国（DE）
+                     {marketName}（{result.market}）
                   </p>
                 </div>
               </div>
@@ -730,7 +732,7 @@ export function RealReportPanel({
                 <div>
                   <p className="text-[9px] text-deep-400">检测模型</p>
                   <p className="mt-0.5 text-[11px] font-medium text-deep-700">
-                    DeepSeek + 本地知识库
+                    DeepSeek + 知识库
                   </p>
                 </div>
               </div>
@@ -1042,7 +1044,7 @@ export function RealReportPanel({
                     <KnowledgeReference knowledge={activeRisk.knowledge} />
                   ) : (
                     <div className="rounded-xl border border-dashed border-deep-200 bg-deep-50/40 px-3.5 py-4 text-[10px] leading-5 text-deep-400">
-                      未关联本地知识库规则；本条判断仅来自模型初筛，需人工复核。
+                      未关联知识库规则；本条判断仅来自模型初筛，需人工复核。
                     </div>
                   ))}
 
