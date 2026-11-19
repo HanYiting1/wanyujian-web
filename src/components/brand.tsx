@@ -1,4 +1,3 @@
-import { Languages } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface BrandProps {
@@ -9,21 +8,24 @@ interface BrandProps {
 export function Brand({ tone = "dark", className }: BrandProps) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <span className="relative grid size-9 shrink-0 place-items-center overflow-hidden rounded-[0.7rem] bg-gradient-to-br from-aqua-300 via-aqua-400 to-aqua-600 text-deep-950 shadow-[0_4px_18px_rgba(18,184,160,0.25)]">
+      <span className="group relative grid size-9 shrink-0 place-items-center rounded-full border border-white/80 bg-white shadow-[0_6px_18px_rgba(15,76,95,0.14)] transition-transform duration-300 hover:scale-105">
         <span
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.45),transparent_52%)]"
+          className="absolute inset-[2px] rounded-full bg-[conic-gradient(from_140deg,#a4f3e2,#34d3b7,#dbeafe,#a4f3e2)] opacity-75"
         />
-        <Languages
+        <span
           aria-hidden="true"
-          className="relative size-[1.15rem]"
-          strokeWidth={2.2}
+          className="absolute inset-[4px] rounded-full bg-white/95"
         />
+        <span className="relative text-[12px] font-semibold tracking-[-0.1em] text-deep-950">
+          文A
+        </span>
+        <span className="absolute right-0 bottom-0 size-2 rounded-full bg-aqua-500 ring-2 ring-white" />
       </span>
       <span className="flex flex-col gap-1">
         <span
           className={cn(
-            "text-[1.05rem] leading-none font-semibold tracking-[0.16em]",
+            "text-[1.08rem] leading-none font-semibold tracking-[0.16em]",
             tone === "light" ? "text-white" : "text-deep-950",
           )}
         >
@@ -31,7 +33,7 @@ export function Brand({ tone = "dark", className }: BrandProps) {
         </span>
         <span
           className={cn(
-            "text-[0.54rem] leading-none font-medium tracking-[0.2em] uppercase",
+            "text-[0.6rem] leading-none font-medium tracking-[0.2em] uppercase",
             tone === "light" ? "text-aqua-200/75" : "text-deep-500",
           )}
         >

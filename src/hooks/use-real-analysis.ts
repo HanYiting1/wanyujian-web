@@ -59,7 +59,7 @@ function isRiskKnowledge(value: unknown): value is RiskKnowledge {
   return (
     isRecord(value) &&
     typeof value.id === "string" &&
-    value.market === "DE" &&
+    typeof value.market === "string" &&
     isKnowledgeKind(value.kind) &&
     typeof value.category === "string" &&
     (value.subcategory === null || typeof value.subcategory === "string") &&
@@ -96,7 +96,7 @@ function isAnalyzeApiSuccess(value: unknown): value is AnalyzeApiSuccess {
     Array.isArray(value.risks) &&
     value.risks.every(isAnalysisRisk) &&
     typeof value.rewrittenText === "string" &&
-    value.market === "DE" &&
+    typeof value.market === "string" &&
     typeof value.contentType === "string" &&
     typeof value.model === "string" &&
     Array.isArray(value.warnings) &&

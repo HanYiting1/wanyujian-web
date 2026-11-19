@@ -88,12 +88,12 @@ export function UploadPanel({ upload }: UploadPanelProps) {
     <Card className="gap-0 overflow-hidden border border-deep-100 p-0 shadow-[0_14px_36px_rgba(7,30,42,0.05)]">
       <div className="flex items-start justify-between gap-3 border-b border-deep-100 px-4 py-3.5 sm:px-5">
         <div className="flex min-w-0 items-start gap-2.5">
-          <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-md bg-deep-950 font-mono text-[10px] font-semibold text-aqua-300">
+          <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-md bg-deep-950 font-mono text-[11px] font-semibold text-aqua-300">
             02
           </span>
           <div className="min-w-0">
-            <h2 className="text-sm font-semibold text-deep-950">上传待检内容</h2>
-            <p className="mt-0.5 text-[11px] text-deep-500">
+            <h2 className="text-base font-semibold text-deep-950">上传待检内容</h2>
+            <p className="mt-0.5 text-xs text-deep-500">
               单文件 ≤ {MAX_FILE_SIZE_LABEL} · 提取 ≤{" "}
               {MAX_EXTRACTED_TEXT_LENGTH.toLocaleString("zh-CN")} 字符
             </p>
@@ -101,7 +101,7 @@ export function UploadPanel({ upload }: UploadPanelProps) {
         </div>
         <Badge
           variant="outline"
-          className={cn("shrink-0 text-[10px] font-medium", status.className)}
+          className={cn("shrink-0 text-[11px] font-medium", status.className)}
         >
           <span
             aria-hidden="true"
@@ -139,24 +139,24 @@ export function UploadPanel({ upload }: UploadPanelProps) {
                 <Upload aria-hidden="true" className="size-5" />
               )}
             </span>
-            <p className="mt-4 text-sm font-medium text-deep-800">
+            <p className="mt-4 text-base font-medium text-deep-800">
               {upload.isDragActive
                 ? "松开鼠标，添加文件"
                 : "拖拽文件到这里，或点击选择"}
             </p>
-            <p className="mt-1.5 text-xs text-deep-500">
+            <p className="mt-1.5 text-sm text-deep-500">
               支持 TXT、DOCX、PDF 三种格式
             </p>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5">
               {ACCEPTED_EXTENSIONS.map((extension) => (
                 <span
                   key={extension}
-                  className="rounded-md border border-deep-100 bg-white px-2 py-1 font-mono text-[10px] font-medium tracking-wide text-deep-500 uppercase"
+                  className="rounded-md border border-deep-100 bg-white px-2 py-1 font-mono text-[11px] font-medium tracking-wide text-deep-500 uppercase"
                 >
                   {extension}
                 </span>
               ))}
-              <span className="rounded-md border border-deep-100 bg-white px-2 py-1 text-[10px] text-deep-500">
+              <span className="rounded-md border border-deep-100 bg-white px-2 py-1 text-[11px] text-deep-500">
                 单文件 ≤ {MAX_FILE_SIZE_LABEL}
               </span>
             </div>
@@ -170,19 +170,19 @@ export function UploadPanel({ upload }: UploadPanelProps) {
               <div className="min-w-0 flex-1">
                 <div className="flex min-w-0 flex-wrap items-center gap-2">
                   <p
-                    className="max-w-full truncate text-sm font-medium text-deep-900"
+                    className="max-w-full truncate text-base font-medium text-deep-900"
                     title={document.file.name}
                   >
                     {document.file.name}
                   </p>
                   <Badge
                     variant="outline"
-                    className="border-deep-200 bg-deep-50 font-mono text-[9px] text-deep-500 uppercase"
+                    className="border-deep-200 bg-deep-50 font-mono text-[10px] text-deep-500 uppercase"
                   >
                     {document.kind}
                   </Badge>
                 </div>
-                <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-deep-500">
+                <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-deep-500">
                   <span>{formatFileSize(document.file.size)}</span>
                   <span aria-hidden="true" className="text-deep-300">
                     /
@@ -207,7 +207,7 @@ export function UploadPanel({ upload }: UploadPanelProps) {
                 "aria-label": "拖拽或点击替换当前文件",
               })}
               className={cn(
-                "mt-3 flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed px-3 py-2.5 text-[11px] transition-colors outline-none focus-visible:ring-4",
+                "mt-3 flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed px-3 py-2.5 text-xs transition-colors outline-none focus-visible:ring-4",
                 upload.isDragActive
                   ? "border-aqua-500 bg-aqua-50 text-aqua-700"
                   : "border-deep-200 bg-deep-50/40 text-deep-500 hover:border-aqua-400 hover:bg-aqua-50/50 hover:text-deep-700 focus-visible:border-aqua-500 focus-visible:ring-aqua-500/15",
@@ -232,10 +232,10 @@ export function UploadPanel({ upload }: UploadPanelProps) {
               className="mt-0.5 size-4 shrink-0 text-risk-600"
             />
             <div className="min-w-0 flex-1">
-              <p className="text-xs font-semibold text-risk-700">
+              <p className="text-sm font-semibold text-risk-700">
                 {upload.error.title}
               </p>
-              <p className="mt-0.5 text-[11px] leading-5 text-risk-600">
+              <p className="mt-0.5 text-xs leading-5 text-risk-600">
                 {upload.error.message}
               </p>
             </div>
@@ -262,10 +262,10 @@ export function UploadPanel({ upload }: UploadPanelProps) {
                   className="size-4 animate-spin text-aqua-600"
                 />
                 <div>
-                  <p className="text-xs font-medium text-deep-800">
+                  <p className="text-sm font-medium text-deep-800">
                     服务端正在解析文件…
                   </p>
-                  <p className="mt-0.5 text-[11px] text-deep-500">
+                  <p className="mt-0.5 text-xs text-deep-500">
                     正在从 {document.kind.toUpperCase()}{" "}
                     文件中提取纯文本，请稍候。
                   </p>
@@ -283,10 +283,10 @@ export function UploadPanel({ upload }: UploadPanelProps) {
                   className="mt-0.5 size-4 shrink-0 text-risk-600"
                 />
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-semibold text-risk-700">
+                  <p className="text-sm font-semibold text-risk-700">
                     文件解析失败
                   </p>
-                  <p className="mt-0.5 text-[11px] leading-5 text-risk-600">
+                  <p className="mt-0.5 text-xs leading-5 text-risk-600">
                     {upload.parseState.message}
                   </p>
                 </div>
@@ -307,14 +307,14 @@ export function UploadPanel({ upload }: UploadPanelProps) {
               <>
                 <div className="mt-3 overflow-hidden rounded-xl border border-deep-100 bg-white">
                   <div className="flex flex-wrap items-center justify-between gap-2 border-b border-deep-100 bg-deep-50/50 px-3.5 py-2.5">
-                    <span className="flex items-center gap-1.5 text-[11px] font-medium text-deep-600">
+                    <span className="flex items-center gap-1.5 text-xs font-medium text-deep-600">
                       <FileText
                         aria-hidden="true"
                         className="size-3.5 text-aqua-600"
                       />
                       只读文本预览
                     </span>
-                    <span className="text-[10px] text-deep-400">
+                    <span className="text-[11px] text-deep-400">
                       {upload.parseState.charCount.toLocaleString("zh-CN")}{" "}
                       字符
                     </span>
@@ -322,12 +322,12 @@ export function UploadPanel({ upload }: UploadPanelProps) {
                   {upload.parseState.text.trim().length > 0 ? (
                     <pre
                       aria-label={`${document.kind.toUpperCase()} 文件文本预览`}
-                      className="max-h-56 overflow-auto px-3.5 py-3 font-sans text-xs leading-6 break-words whitespace-pre-wrap text-deep-700"
+                      className="max-h-56 overflow-auto px-3.5 py-3 font-sans text-sm leading-7 break-words whitespace-pre-wrap text-deep-700"
                     >
                       {upload.parseState.text}
                     </pre>
                   ) : (
-                    <p className="px-3.5 py-6 text-center text-xs text-deep-400">
+                    <p className="px-3.5 py-6 text-center text-sm text-deep-400">
                       文件内容为空，或只包含空白字符。
                     </p>
                   )}
@@ -335,14 +335,14 @@ export function UploadPanel({ upload }: UploadPanelProps) {
 
                 {upload.parseState.warnings.length > 0 && (
                   <div className="mt-2 rounded-xl border border-amber-200 bg-amber-50 p-3">
-                    <p className="flex items-center gap-1.5 text-[11px] font-semibold text-amber-800">
+                    <p className="flex items-center gap-1.5 text-xs font-semibold text-amber-800">
                       <TriangleExclamationPoint
                         aria-hidden="true"
                         className="size-3.5"
                       />
                       解析提示
                     </p>
-                    <ul className="mt-1 list-disc space-y-1 pl-4 text-[11px] leading-5 text-amber-700">
+                    <ul className="mt-1 list-disc space-y-1 pl-4 text-xs leading-5 text-amber-700">
                       {upload.parseState.warnings.map((warning) => (
                         <li key={warning}>{warning}</li>
                       ))}
@@ -354,10 +354,10 @@ export function UploadPanel({ upload }: UploadPanelProps) {
           </>
         )}
 
-        <p className="mt-3 flex items-start gap-1.5 text-[10px] leading-4 text-deep-400">
+        <p className="mt-3 flex items-start gap-1.5 text-[11px] leading-5 text-deep-400">
           <LockKeyhole
             aria-hidden="true"
-            className="mt-0.5 size-3 shrink-0 text-deep-400"
+            className="mt-0.5 size-3.5 shrink-0 text-deep-400"
           />
           文件会发送到服务端解析接口，仅用于本次文本提取，不保存；刷新页面后需重新选择。
         </p>
