@@ -1,12 +1,5 @@
 import mammoth from "mammoth";
 import {
-  FormatError,
-  InvalidPDFException,
-  PasswordException,
-  PDFParse,
-  VerbosityLevel,
-} from "pdf-parse";
-import {
   MAX_EXTRACTED_TEXT_LENGTH,
   normalizeText,
 } from "@/lib/analysis/files";
@@ -115,9 +108,23 @@ async function parseDocx(buffer: Buffer): Promise<ParsedText> {
 async function parsePdf(buffer: Buffer): Promise<ParsedText> {
   assertPdfSignature(buffer);
 
+  // pdf-parse must be loaded lazily. A static import initializes pdf.js at
+  // module load time and throws "DOMMatrix is not defined" on serverless
+  // Node.js, which would also break TXT and DOCX parsing.
+  // The worker module installs the Node canvas globals first.
+  const { CanvasFactory } = await import("pdf-parse/worker");
+  const {
+    FormatError,
+    InvalidPDFException,
+    PasswordException,
+    PDFParse,
+    VerbosityLevel,
+  } = await import("pdf-parse");
+
   const parser = new PDFParse({
     data: new Uint8Array(buffer),
     verbosity: VerbosityLevel.ERRORS,
+    CanvasFactory,
   });
 
   try {
